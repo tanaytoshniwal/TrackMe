@@ -1,0 +1,8 @@
+{
+  "name": "TrackMe",
+  "app_id": "b095dcf4",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
