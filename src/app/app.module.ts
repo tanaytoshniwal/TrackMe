@@ -9,13 +9,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ToDoPage } from '../pages/to-do/to-do';
 import { TransactionsPage } from '../pages/transactions/transactions';
+import { NotesPage } from '../pages/notes/notes';
+import { RemaindersPage } from '../pages/remainders/remainders';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
     ToDoPage,
-    TransactionsPage
+    TransactionsPage,
+    NotesPage,
+    RemaindersPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,10 @@ import { TransactionsPage } from '../pages/transactions/transactions';
     MyApp,
     TabsPage,
     ToDoPage,
-    TransactionsPage
+    TransactionsPage,
+    NotesPage,
+    RemaindersPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
