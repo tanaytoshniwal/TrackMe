@@ -21,9 +21,6 @@ export class TransactionsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private modalCtrl: ModalController) {
     this.transactions = data.transactions;
-    for(let i of this.transactions){
-      i.date = data.formatDate(i.date);
-    }
   }
 
   ionViewDidLoad() {
@@ -35,4 +32,11 @@ export class TransactionsPage {
     modal.present();
   }
 
+  gotback(i){
+    this.transactions[i].lend = false;
+  }
+
+  remove(i){
+    this.transactions.splice(i, 1);
+  }
 }

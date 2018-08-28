@@ -47,7 +47,7 @@ export class AddtransactionPage {
 
   add(){
     this.transactions.push({
-      amount: this.amount, date: this.date, reason: this.reason, paid_to: this.paid_to, lend: this.lend
+      amount: this.amount, date: new Date(this.date), reason: this.reason, paid_to: this.paid_to, lend: this.lend
     });
 
     this.dismiss();

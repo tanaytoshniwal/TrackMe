@@ -21,6 +21,8 @@ export interface Transaction{
 @Injectable()
 export class DataProvider {
 
+  totalAmount:Number;
+
   transactions: Array<Transaction> = [
     {amount: 101, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: false},
     {amount: 1011, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true},

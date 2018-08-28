@@ -4,16 +4,12 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-fab top right color="blue">
-      <button ion-fab mini><ion-icon name="ios-settings-outline"></ion-icon></button>
-  </ion-fab>
-
-  <ion-card *ngFor = 'let trans of transactions;'>
+  <ion-card *ngFor = 'let trans of transactions; let i = index;'>
     <ion-item>
       <ion-icon name="ios-cash-outline" item-start>
       </ion-icon>
       <h2><b>{{trans.amount}}</b> Bucks</h2>
-      <p>{{trans.date}}</p>
+      <p><ion-col>{{data.formatDate(trans.date)}}</ion-col><ion-col>Paid to: {{trans.paid_to}}</ion-col></p>
     </ion-item>
     <ion-card-content>
       <p>{{trans.reason}}</p>
@@ -21,13 +17,13 @@
 
     <ion-row>
       <ion-col text-center *ngIf="trans.lend">
-        <button ion-button icon-start clear>
+        <button ion-button icon-start clear (click)="gotback(i)">
           <ion-icon name="ios-done-all-outline" color="green"></ion-icon>
           <div>Got it back</div>
         </button>
       </ion-col>
       <ion-col text-center>
-        <button ion-button icon-start clear>
+        <button ion-button icon-start clear (click)="remove(i)">
           <ion-icon name="ios-trash-outline" color="red"></ion-icon>
           <div>Delete</div>
         </button>
