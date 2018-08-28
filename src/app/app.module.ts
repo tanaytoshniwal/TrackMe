@@ -12,6 +12,9 @@ import { TransactionsPage } from '../pages/transactions/transactions';
 import { NotesPage } from '../pages/notes/notes';
 import { RemaindersPage } from '../pages/remainders/remainders';
 import { ProfilePage } from '../pages/profile/profile';
+import { AddtransactionPage } from '../pages/addtransaction/addtransaction';
+import { DataProvider } from '../providers/data/data';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,11 +24,13 @@ import { ProfilePage } from '../pages/profile/profile';
     TransactionsPage,
     NotesPage,
     RemaindersPage,
-    ProfilePage
+    ProfilePage,
+    AddtransactionPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,12 +40,14 @@ import { ProfilePage } from '../pages/profile/profile';
     TransactionsPage,
     NotesPage,
     RemaindersPage,
-    ProfilePage
+    ProfilePage,
+    AddtransactionPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataProvider
   ]
 })
 export class AppModule {}

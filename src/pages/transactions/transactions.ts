@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
+import { AddtransactionPage } from '../addtransaction/addtransaction';
 
 /**
  * Generated class for the TransactionsPage page.
@@ -15,11 +17,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TransactionsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  transactions = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private modalCtrl: ModalController) {
+    this.transactions = data.transactions;
+    for(let i of this.transactions){
+      i.date = data.formatDate(i.date);
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TransactionsPage');
+  }
+
+  openModal() {
+    let modal = this.modalCtrl.create(AddtransactionPage);
+    modal.present();
   }
 
 }
