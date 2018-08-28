@@ -14,5 +14,35 @@
 
 
 <ion-content padding>
+    
+  <ion-fab right bottom (click)="openModal()">
+    <button ion-fab color="blue"><ion-icon name="ios-brush-outline"></ion-icon></button>
+  </ion-fab>
+  <ion-card *ngFor = 'let note of notes; let i = index;'>
+    <ion-item>
+      <ion-icon name="ios-clipboard-outline" item-start>
+      </ion-icon>
+      <h2><b>{{note.title}}</b></h2>
+      <p><ion-col>{{data.formatDate(note.date)}}</ion-col><ion-col *ngIf="note.pinned"><ion-icon name="ios-bookmark" color="green"></ion-icon> Pinned</ion-col></p>
+    </ion-item>
+    <ion-card-content>
+      <p>{{note.content}}</p>
+    </ion-card-content>
 
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button icon-start clear (click)="pin_switch(i)">
+          <ion-icon name="ios-bookmark-outline" color="green"></ion-icon>
+          <div *ngIf="note.pinned">Unpin</div>
+          <div *ngIf="!note.pinned">Pin</div>
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button icon-start clear (click)="remove(i)">
+          <ion-icon name="ios-trash-outline" color="red"></ion-icon>
+          <div>Delete</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

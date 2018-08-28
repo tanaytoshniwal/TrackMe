@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { DataProvider } from '../../providers/data/data';
+import { DataProvider, Transaction } from '../../providers/data/data';
 import { AddtransactionPage } from '../addtransaction/addtransaction';
 
 /**
@@ -17,7 +17,7 @@ import { AddtransactionPage } from '../addtransaction/addtransaction';
 })
 export class TransactionsPage {
 
-  transactions = [];
+  transactions:Array<Transaction> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private modalCtrl: ModalController) {
     this.transactions = data.transactions;

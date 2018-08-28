@@ -15,6 +15,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { AddtransactionPage } from '../pages/addtransaction/addtransaction';
 import { DataProvider } from '../providers/data/data';
 import { HttpClientModule } from '@angular/common/http';
+import { AddnotePage } from '../pages/addnote/addnote';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     TransactionsPage,
     NotesPage,
     RemaindersPage,
+    AddnotePage,
     ProfilePage,
     AddtransactionPage
   ],
@@ -39,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     ToDoPage,
     TransactionsPage,
     NotesPage,
+    AddnotePage,
     RemaindersPage,
     ProfilePage,
     AddtransactionPage

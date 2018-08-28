@@ -18,6 +18,13 @@ export interface Transaction{
   lend: Boolean
 }
 
+export interface Note{
+  title: String,
+  content: String,
+  date: Date,
+  pinned: Boolean
+}
+
 @Injectable()
 export class DataProvider {
 
@@ -29,6 +36,14 @@ export class DataProvider {
     {amount: 11, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true},
     {amount: 1101, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: false},
     {amount: 1, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true}
+  ];
+
+  notes = [
+    {title: 'One', content: 'sample', date: new Date(), pinned: false},
+    {title: 'Two', content: 'sample', date: new Date(), pinned: true},
+    {title: 'Three', content: 'sample', date: new Date(), pinned: false},
+    {title: 'Four', content: 'sample', date: new Date(), pinned: false},
+    {title: 'Five', content: 'sample', date: new Date(), pinned: true}
   ];
 
   constructor(public http: HttpClient) {
