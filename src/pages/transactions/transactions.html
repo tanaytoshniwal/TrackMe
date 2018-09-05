@@ -8,8 +8,11 @@
     <ion-item>
       <ion-icon name="ios-cash-outline" item-start>
       </ion-icon>
-      <h2 margin><b>{{trans.amount}}</b> Bucks</h2>
-      <p><ion-col>{{data.formatDate(trans.date)}}</ion-col><ion-col>Paid to: {{trans.paid_to}}</ion-col></p>
+      <div margin>
+        <h2><b>{{trans.amount}}</b> Bucks</h2>
+        <h4>Paid to: {{trans.paid_to}}</h4>
+        <h4>{{data.formatDate(trans.date)}}</h4>
+      </div>
     </ion-item>
     <ion-card-content>
       <p>{{trans.reason}}</p>

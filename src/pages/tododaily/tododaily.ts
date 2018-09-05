@@ -31,7 +31,6 @@ export class TododailyPage {
   add(){
     if(this.data != null && this.data != ''){
       this.date = new Date();
-      this.date = this.date.toLocaleDateString() + ' - ' + this.date.toLocaleTimeString();
       this.list.push({task: this.data, status: 'pending', priority: this.priority, date: this.date});
       this.data = '';
       this.count++;
