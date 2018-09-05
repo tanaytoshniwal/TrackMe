@@ -8,7 +8,33 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 
-export interface todo{}
+export interface TodoDaily{
+  task: String,
+  priority: String,
+  date: Date,
+  status: String
+}
+
+export interface TodoWeekly{
+  task: String,
+  priority: String,
+  date: Date,
+  status: String
+}
+
+export interface TodoMonthly{
+  task: String,
+  priority: String,
+  date: Date,
+  status: String
+}
+
+export interface TodoYearly{
+  task: String,
+  priority: String,
+  date: Date,
+  status: String
+}
 
 export interface Transaction{
   amount: Number,

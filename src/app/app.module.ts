@@ -16,6 +16,10 @@ import { AddtransactionPage } from '../pages/addtransaction/addtransaction';
 import { DataProvider } from '../providers/data/data';
 import { HttpClientModule } from '@angular/common/http';
 import { AddnotePage } from '../pages/addnote/addnote';
+import { TododailyPage } from '../pages/tododaily/tododaily';
+import { TodoweeklyPage } from '../pages/todoweekly/todoweekly';
+import { TodomonthlyPage } from '../pages/todomonthly/todomonthly';
+import { TodoyearlyPage } from '../pages/todoyearly/todoyearly';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { AddnotePage } from '../pages/addnote/addnote';
     RemaindersPage,
     AddnotePage,
     ProfilePage,
-    AddtransactionPage
+    AddtransactionPage,
+    TododailyPage,
+    TodoweeklyPage,
+    TodomonthlyPage,
+    TodoyearlyPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,11 @@ import { AddnotePage } from '../pages/addnote/addnote';
     AddnotePage,
     RemaindersPage,
     ProfilePage,
-    AddtransactionPage
+    AddtransactionPage,
+    TododailyPage,
+    TodoweeklyPage,
+    TodomonthlyPage,
+    TodoyearlyPage
   ],
   providers: [
     StatusBar,

@@ -8,7 +8,7 @@
 
 
 <ion-content padding>
-  <ion-row><ion-card col-6>
+  <ion-row><ion-card col-6 (click)="open(0)">
     <ion-card-header>
       Daily Tasks
     </ion-card-header>
@@ -16,7 +16,7 @@
       <i>"What's better than tracking yourself Daily???"</i>
     </ion-card-content>
   </ion-card></ion-row>
-  <ion-row justify-content-end><ion-card col-6>
+  <ion-row justify-content-end><ion-card col-6 (click)="open(1)">
     <ion-card-header>
       Weekly Tasks
     </ion-card-header>
@@ -24,7 +24,7 @@
       <i>"Let's cluster your Daily Works?"</i>
     </ion-card-content>
   </ion-card></ion-row>
-  <ion-row><ion-card col-6>
+  <ion-row><ion-card col-6 (click)="open(2)">
     <ion-card-header>
       Monthly Tasks
     </ion-card-header>
@@ -32,7 +32,7 @@
       <i>"Grow even more by meeting your monthly goals!"</i>
     </ion-card-content>
   </ion-card></ion-row>
-  <ion-row justify-content-end><ion-card col-6>
+  <ion-row justify-content-end><ion-card col-6 (click)="open(3)">
     <ion-card-header>
       Yearly Tasks
     </ion-card-header>
