@@ -22,8 +22,11 @@
     <ion-item>
       <ion-icon name="ios-clipboard-outline" item-start>
       </ion-icon>
-      <h2><b>{{note.title}}</b></h2>
-      <p><ion-col>{{data.formatDate(note.date)}}</ion-col><ion-col *ngIf="note.pinned"><ion-icon name="ios-bookmark" color="green"></ion-icon> Pinned</ion-col></p>
+      <div margin>
+        <h2><b>{{note.title}}</b></h2>
+        <h4 *ngIf="note.pinned"><ion-icon name="ios-bookmark" color="green"></ion-icon> Pinned</h4>
+        <h4>{{data.formatDate(note.date)}}</h4>
+      </div>
     </ion-item>
     <ion-card-content>
       <p>{{note.content}}</p>
