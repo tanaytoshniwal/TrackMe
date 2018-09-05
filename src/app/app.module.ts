@@ -20,6 +20,10 @@ import { TododailyPage } from '../pages/tododaily/tododaily';
 import { TodoweeklyPage } from '../pages/todoweekly/todoweekly';
 import { TodomonthlyPage } from '../pages/todomonthly/todomonthly';
 import { TodoyearlyPage } from '../pages/todoyearly/todoyearly';
+import { CompletedailyPage } from '../pages/completedaily/completedaily';
+import { CompleteweeklyPage } from '../pages/completeweekly/completeweekly';
+import { CompletemonthlyPage } from '../pages/completemonthly/completemonthly';
+import { CompleteyearlyPage } from '../pages/completeyearly/completeyearly';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { TodoyearlyPage } from '../pages/todoyearly/todoyearly';
     TododailyPage,
     TodoweeklyPage,
     TodomonthlyPage,
-    TodoyearlyPage
+    TodoyearlyPage,
+    CompletedailyPage,
+    CompleteweeklyPage,
+    CompletemonthlyPage,
+    CompleteyearlyPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +64,11 @@ import { TodoyearlyPage } from '../pages/todoyearly/todoyearly';
     TododailyPage,
     TodoweeklyPage,
     TodomonthlyPage,
-    TodoyearlyPage
+    TodoyearlyPage,
+    CompletedailyPage,
+    CompleteweeklyPage,
+    CompletemonthlyPage,
+    CompleteyearlyPage
   ],
   providers: [
     StatusBar,

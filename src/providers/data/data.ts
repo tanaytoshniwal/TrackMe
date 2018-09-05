@@ -56,6 +56,15 @@ export class DataProvider {
 
   totalAmount:Number;
 
+  todoDaily: Array<TodoDaily> = [
+    {task: 'one', priority: 'High', date: new Date(), status: 'pending'},
+    {task: 'two', priority: 'High', date: new Date(), status: 'pending'},
+    {task: 'three', priority: 'Medium', date: new Date(), status: 'pending'},
+    {task: 'four', priority: 'Low', date: new Date(), status: 'pending'},
+    {task: 'five', priority: 'Low', date: new Date(), status: 'pending'},
+    {task: 'six', priority: 'Medium', date: new Date(), status: 'pending'}
+  ];
+
   transactions: Array<Transaction> = [
     {amount: 101, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: false},
     {amount: 1011, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true},

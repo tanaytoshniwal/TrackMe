@@ -25,7 +25,7 @@
       <ion-option class="dropdown-item bg-light">Low</ion-option>
     </ion-select>
   </ion-item>
-  <div class="alert alert-secondary">{{count}} of {{list.length}} pending</div>
+  <ion-fab bottom left><button ion-fab mini (click)="complete()" color="green"><ion-icon name="ios-done-all-outline"></ion-icon></button></ion-fab>
   <ion-fab bottom right><button ion-fab mini (click)="add()"><ion-icon name="add"></ion-icon></button></ion-fab>
   <ion-segment [(ngModel)]="tasks">
     <ion-segment-button value="High">
@@ -40,26 +40,28 @@
   </ion-segment>
   <div [ngSwitch] = "tasks">
   <ion-list *ngFor="let l of list; let i = index;" class="animated fadeIn my-2">
-    <ion-card *ngSwitchCase="l.priority">
-      <div class="">
-        <ion-card-header>
-          <ion-fab top right>
-            <button ion-fab mini color="info">
-              <ion-icon name="ios-more-outline"></ion-icon>
-            </button>
-            <ion-fab-list side="left">
-              <button ion-fab (click)="status(l)" color="secondary"><ion-icon name="ios-checkmark-circle-outline"></ion-icon></button>
-              <button ion-fab (click)="edit(l)" color="dark"><ion-icon name="ios-build-outline"></ion-icon></button>
-              <button ion-fab (click)="remove(l, i)" color="danger"><ion-icon name="ios-trash-outline"></ion-icon></button>
-            </ion-fab-list>
-          </ion-fab>
-          <p>{{l.date}}</p>
-        </ion-card-header>
-        <ion-card-content>
-          <p class="my-2">{{l.task}}</p>
-        </ion-card-content>
-      </div>
-    </ion-card>
+    <div class="" *ngIf="l.status == 'pending'">
+      <ion-card *ngSwitchCase="l.priority">
+        <div class="">
+          <ion-card-header>
+            <ion-fab top right>
+              <button ion-fab mini color="info">
+                <ion-icon name="ios-more-outline"></ion-icon>
+              </button>
+              <ion-fab-list side="left">
+                <button ion-fab (click)="status(l)" color="secondary"><ion-icon name="ios-checkmark-circle-outline"></ion-icon></button>
+                <button ion-fab (click)="edit(l)" color="dark"><ion-icon name="ios-build-outline"></ion-icon></button>
+                <button ion-fab (click)="remove(l, i)" color="danger"><ion-icon name="ios-trash-outline"></ion-icon></button>
+              </ion-fab-list>
+            </ion-fab>
+            <p>{{dataProvider.formatDate(l.date)}}</p>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="my-2">{{l.task}}</p>
+          </ion-card-content>
+        </div>
+      </ion-card>
+    </div>
   </ion-list>
   </div>
 </ion-content>
