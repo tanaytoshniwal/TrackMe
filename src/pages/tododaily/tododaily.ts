@@ -25,7 +25,6 @@ export class TododailyPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider) {
     this.list = dataProvider.todoDaily;
-
   }
 
   ionViewDidLoad() {

@@ -25,6 +25,12 @@ import { CompleteweeklyPage } from '../pages/completeweekly/completeweekly';
 import { CompletemonthlyPage } from '../pages/completemonthly/completemonthly';
 import { CompleteyearlyPage } from '../pages/completeyearly/completeyearly';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -48,7 +54,10 @@ import { CompleteyearlyPage } from '../pages/completeyearly/completeyearly';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

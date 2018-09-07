@@ -109,6 +109,7 @@ export class DataProvider {
   ];
 
   constructor(public http: HttpClient) {
+    
   }
 
   formatDate(date) {
