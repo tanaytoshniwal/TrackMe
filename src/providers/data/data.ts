@@ -65,6 +65,15 @@ export class DataProvider {
     {task: 'six', priority: 'Medium', date: new Date(), status: 'pending'}
   ];
 
+  todoMonthly: Array<TodoMonthly> = [
+    {task: 'one_M', priority: 'High', date: new Date(), status: 'pending'},
+    {task: 'two_M', priority: 'High', date: new Date(), status: 'pending'},
+    {task: 'three_M', priority: 'Medium', date: new Date(), status: 'pending'},
+    {task: 'four_M', priority: 'Low', date: new Date(), status: 'pending'},
+    {task: 'five_M', priority: 'Low', date: new Date(), status: 'pending'},
+    {task: 'six_M', priority: 'Medium', date: new Date(), status: 'pending'}
+  ];
+
   transactions: Array<Transaction> = [
     {amount: 101, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: false},
     {amount: 1011, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true},

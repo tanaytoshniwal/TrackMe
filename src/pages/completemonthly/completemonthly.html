@@ -1,18 +1,42 @@
 <!--
-  Generated template for the CompletemonthlyPage page.
+  Generated template for the CompletedailyPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>completemonthly</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar color="blue">
+      <ion-title>Completed</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-fab top right edge (click)="dismiss()">
+      <button ion-fab mini color="danger"><ion-icon name="ios-close-outline"></ion-icon></button>
+    </ion-fab>
+    <ion-list *ngFor="let l of list; let i = index;" class="animated fadeIn my-2">
+      <ion-card *ngIf="l.status == 'completed'">
+        <div class="">
+          <ion-card-header>
+            <ion-fab top right>
+              <button ion-fab mini color="info">
+                <ion-icon name="ios-more-outline"></ion-icon>
+              </button>
+              <ion-fab-list side="left">
+                <button ion-fab (click)="status(l)" color="danger"><ion-icon name="ios-close-outline"></ion-icon></button>
+                <button ion-fab (click)="remove(l, i)" color="danger"><ion-icon name="ios-trash-outline"></ion-icon></button>
+              </ion-fab-list>
+            </ion-fab>
+            <p>{{dataProvider.formatDate(l.date)}}</p>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="my-2">{{l.task}}</p>
+          </ion-card-content>
+        </div>
+      </ion-card>
+    </ion-list>
+  </ion-content>
+  
