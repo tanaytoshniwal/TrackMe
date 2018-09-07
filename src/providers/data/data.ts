@@ -74,6 +74,24 @@ export class DataProvider {
     {task: 'six_M', priority: 'Medium', date: new Date(), status: 'pending'}
   ];
 
+  todoWeekly: Array<TodoWeekly> = [
+    {task: 'one_W', priority: 'High', date: new Date(), status: 'pending'},
+    {task: 'two_W', priority: 'High', date: new Date(), status: 'pending'},
+    {task: 'three_W', priority: 'Medium', date: new Date(), status: 'pending'},
+    {task: 'four_W', priority: 'Low', date: new Date(), status: 'pending'},
+    {task: 'five_W', priority: 'Low', date: new Date(), status: 'pending'},
+    {task: 'six_W', priority: 'Medium', date: new Date(), status: 'pending'}
+  ];
+
+  todoYearly: Array<TodoYearly> = [
+    {task: 'one_Y', priority: 'High', date: new Date(), status: 'pending'},
+    {task: 'two_Y', priority: 'High', date: new Date(), status: 'pending'},
+    {task: 'three_Y', priority: 'Medium', date: new Date(), status: 'pending'},
+    {task: 'four_Y', priority: 'Low', date: new Date(), status: 'pending'},
+    {task: 'five_Y', priority: 'Low', date: new Date(), status: 'pending'},
+    {task: 'six_Y', priority: 'Medium', date: new Date(), status: 'pending'}
+  ];
+
   transactions: Array<Transaction> = [
     {amount: 101, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: false},
     {amount: 1011, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true},

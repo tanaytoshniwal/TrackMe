@@ -25,9 +25,9 @@
       <ion-option class="dropdown-item bg-light">Low</ion-option>
     </ion-select>
   </ion-item>
-  <ion-fab bottom left><button ion-fab mini (click)="complete()" color="green"><ion-icon name="ios-done-all-outline"></ion-icon></button></ion-fab>
-  <ion-fab bottom right><button ion-fab mini (click)="add()"><ion-icon name="add"></ion-icon></button></ion-fab>
-  <ion-segment [(ngModel)]="tasks">
+  <ion-fab bottom right><button ion-fab mini (click)="complete()" color="green"><ion-icon name="ios-done-all-outline"></ion-icon></button></ion-fab>
+    <button ion-button color="dark" (click)="add()" round block><ion-icon name="add"></ion-icon> Add the task</button>
+    <ion-segment [(ngModel)]="tasks">
     <ion-segment-button value="High">
       High
     </ion-segment-button>
