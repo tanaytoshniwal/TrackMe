@@ -29,7 +29,6 @@ export class AddtransactionPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddtransactionPage');
   }
 
   dismiss() {

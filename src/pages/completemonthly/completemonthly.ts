@@ -43,7 +43,6 @@ export class CompletemonthlyPage {
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompletemonthlyPage');
   }
 
 }

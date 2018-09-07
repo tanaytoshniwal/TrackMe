@@ -29,7 +29,6 @@ export class TodomonthlyPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TodomonthlyPage');
   }
 
   add(){

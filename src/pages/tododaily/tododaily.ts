@@ -29,7 +29,6 @@ export class TododailyPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TododailyPage');
   }
   add(){
     if(this.data != null && this.data != ''){

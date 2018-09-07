@@ -19,7 +19,6 @@ export class RemaindersPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RemaindersPage');
   }
 
 }

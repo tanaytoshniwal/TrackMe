@@ -42,7 +42,6 @@ export class CompleteweeklyPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompleteweeklyPage');
   }
 
 }

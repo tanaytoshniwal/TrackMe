@@ -109,7 +109,6 @@ export class DataProvider {
   ];
 
   constructor(public http: HttpClient) {
-    console.log('Hello DataProvider Provider');
   }
 
   formatDate(date) {

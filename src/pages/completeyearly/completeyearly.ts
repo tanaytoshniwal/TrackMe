@@ -42,7 +42,6 @@ export class CompleteyearlyPage {
   }
   
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompleteyearlyPage');
   }
 
 }

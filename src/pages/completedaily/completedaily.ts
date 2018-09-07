@@ -23,7 +23,6 @@ export class CompletedailyPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompletedailyPage');
   }
 
   remove(l, i){
