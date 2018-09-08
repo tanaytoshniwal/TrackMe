@@ -24,12 +24,14 @@ import { CompletedailyPage } from '../pages/completedaily/completedaily';
 import { CompleteweeklyPage } from '../pages/completeweekly/completeweekly';
 import { CompletemonthlyPage } from '../pages/completemonthly/completemonthly';
 import { CompleteyearlyPage } from '../pages/completeyearly/completeyearly';
+import { LoginPage } from '../pages/login/login';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { environment } from '../environments/environment';
+import { AuthserviceProvider } from '../providers/authservice/authservice';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { environment } from '../environments/environment';
     CompletedailyPage,
     CompleteweeklyPage,
     CompletemonthlyPage,
-    CompleteyearlyPage
+    CompleteyearlyPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -77,13 +80,15 @@ import { environment } from '../environments/environment';
     CompletedailyPage,
     CompleteweeklyPage,
     CompletemonthlyPage,
-    CompleteyearlyPage
+    CompleteyearlyPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataProvider
+    DataProvider,
+    AuthserviceProvider
   ]
 })
 export class AppModule {}

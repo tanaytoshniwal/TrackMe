@@ -13,6 +13,23 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <div ion-fxed class="space"></div>
+  <div style="height: 30px;position: absolute;"></div>
+  <div style="text-align: center;top:-60px;position: relative;">
+    <img class="img" [src]="photourl" alt="">
+  </div>
+  <div style="text-align: center;top: -70px; position: relative">
+    <h6>{{username}}</h6>
+    <h6>{{email}}</h6>
+  </div>
+  <div padding>
+    <h6>Birth-Date</h6>
+    <h6>Contact Number</h6>
+  </div>
+  <div >
+      <ion-fab bottom right>
+          <button ion-fab (click) = "logOut()" color="blue"><ion-icon name="log-out"></ion-icon></button>
+      </ion-fab>
+  </div>
 </ion-content>

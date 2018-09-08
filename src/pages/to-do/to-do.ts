@@ -20,7 +20,6 @@ import { TodoyearlyPage } from '../todoyearly/todoyearly';
 export class ToDoPage {
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
-
   }
 
   open(i){
