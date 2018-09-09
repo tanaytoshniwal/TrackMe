@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { AuthserviceProvider } from '../providers/authservice/authservice';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +15,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class MyApp {
   rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, fireAuth: AngularFireAuth, loadingCtrl: LoadingController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, fireAuth: AngularFireAuth, loadingCtrl: LoadingController, auth: AuthserviceProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -23,12 +25,15 @@ export class MyApp {
         content: 'Please wait...'
       });
       load.present();
-      fireAuth.authState.subscribe(user => {
-        if(!user){
+      firebase.auth().onAuthStateChanged(user => {
+        if(user){
+          auth.set_user(user);
+          this.rootPage = TabsPage;
           load.dismiss();
         }
         else{
-          this.rootPage = TabsPage;
+          auth.set_user(null);
+          this.rootPage = LoginPage;
           load.dismiss();
         }
       });

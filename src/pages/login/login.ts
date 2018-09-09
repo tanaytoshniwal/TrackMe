@@ -18,18 +18,13 @@ import { TabsPage } from '../tabs/tabs';
 export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthserviceProvider, private app: App) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    
   }
 
   google(){
     this.auth.google_sign_in().then(()=>{
       console.log(this.auth.check_user());
       if(this.auth.check_user()){
-        console.log(this.auth.check_user());
-        console.log(this.app.getRootNav());
         this.app.getRootNav().setRoot(TabsPage);
       }
     }).catch(err=>{

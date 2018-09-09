@@ -19,11 +19,21 @@ export class AuthserviceProvider {
 	constructor(public afAuth: AngularFireAuth, private loadingCtrl: LoadingController) {
 		afAuth.authState.subscribe(user => {
 			this.user = user;
+    });
+  }
+
+  update(){
+		this.afAuth.authState.subscribe(user => {
+			this.user = user;
 		});
   }
 
   check_user(): firebase.User{
     return this.user
+  }
+
+  set_user(user){
+    this.user = user;
   }
   
   google_sign_in(){
