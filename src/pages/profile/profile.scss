@@ -6,20 +6,15 @@ page-profile {
     }
     .border {
         border-color: white;
-        
-       
         border-radius: 60%;
-      }
-    
-      .smaller-image {
-        width: 100px;
-        
-      }
-    .space{
-        height: 25%; 
-        background-color: #222;
     }
-    
+    .smaller-image {
+        width: 100px;
+    }
+    .space{
+        height: 35%; 
+        background-image: url('../../assets/imgs/login.jpg');
+    }
     .img{
         border-width: 33px;
         border-style: solid;

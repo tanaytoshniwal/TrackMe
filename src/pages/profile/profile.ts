@@ -21,12 +21,15 @@ export class ProfilePage {
   username;
   email;
   photourl;
+  phone;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthserviceProvider, private app: App) {
     this.user = auth.check_user();
     this.username = auth.check_user().displayName.toUpperCase();
     this.email = auth.check_user().email;
     this.photourl = auth.check_user().photoURL;
+    this.phone = auth.check_user().phoneNumber;
+    
   }
 
   logOut(){
