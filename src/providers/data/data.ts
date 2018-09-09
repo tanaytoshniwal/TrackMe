@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 */
 
 export interface TodoDaily{
+  _id: string,
   task: String,
   priority: String,
   date: Date,

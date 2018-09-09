@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, ModalController }
 import { DataProvider } from '../../providers/data/data';
 import { CompletedailyPage } from '../completedaily/completedaily';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AuthserviceProvider } from '../../providers/authservice/authservice';
 
 /**
  * Generated class for the TododailyPage page.
@@ -27,7 +28,7 @@ export class TododailyPage {
 
   database: AngularFirestoreCollection;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider, private firestore: AngularFirestore) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider, private firestore: AngularFirestore, private authprovider: AuthserviceProvider) {
     this.list = dataProvider.todoDaily;
     this.database = firestore.collection<any>('todo_daily');
   }
@@ -37,9 +38,8 @@ export class TododailyPage {
   add(){
     if(this.data != null && this.data != ''){
       this.date = new Date();
-      this.obj = {task: this.data, status: 'pending', priority: this.priority, date: this.date};
+      this.obj = {_id: this.authprovider.check_user().uid, task: this.data, status: 'pending', priority: this.priority, date: this.date};
       this.database.add(this.obj).then(data=>{
-        console.log(data);
         this.list.push(this.obj);
         this.obj = null;
       });

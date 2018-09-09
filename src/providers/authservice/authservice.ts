@@ -55,7 +55,7 @@ export class AuthserviceProvider {
     if (!(<any>window).cordova) {
 			return this.afAuth.auth.signInWithPopup(provider).then(()=>{
         this.loading.dismiss();
-
+        this.firestore.firestore.enableNetwork();
       }).catch(err=>{
         console.log('error');
         this.loading.dismiss();
