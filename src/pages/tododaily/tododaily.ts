@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { CompletedailyPage } from '../completedaily/completedaily';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 /**
  * Generated class for the TododailyPage page.
@@ -22,9 +23,13 @@ export class TododailyPage {
   date:any = '';
   priority = 'Medium';
   tasks: string = 'Medium';
+  obj = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider) {
+  database: AngularFirestoreCollection;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider, private firestore: AngularFirestore) {
     this.list = dataProvider.todoDaily;
+    this.database = firestore.collection<any>('todo_daily');
   }
 
   ionViewDidLoad() {
@@ -32,12 +37,18 @@ export class TododailyPage {
   add(){
     if(this.data != null && this.data != ''){
       this.date = new Date();
-      this.list.push({task: this.data, status: 'pending', priority: this.priority, date: this.date});
+      this.obj = {task: this.data, status: 'pending', priority: this.priority, date: this.date};
+      this.database.add(this.obj).then(data=>{
+        console.log(data);
+        this.list.push(this.obj);
+        this.obj = null;
+      });
       this.data = '';
     }
   }
 
   remove(l, i){
+
     this.list.splice(i, 1);
   }
 

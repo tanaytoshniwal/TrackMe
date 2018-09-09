@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import AuthProvider = firebase.auth.AuthProvider;
+import { AngularFirestore } from '@angular/fire/firestore';
 
 /*
   Generated class for the AuthserviceProvider provider.
@@ -16,7 +17,7 @@ export class AuthserviceProvider {
 	private user: firebase.User;
   loading;
 
-	constructor(public afAuth: AngularFireAuth, private loadingCtrl: LoadingController) {
+	constructor(public afAuth: AngularFireAuth, private loadingCtrl: LoadingController, private firestore: AngularFirestore) {
 		afAuth.authState.subscribe(user => {
 			this.user = user;
     });
@@ -45,6 +46,8 @@ export class AuthserviceProvider {
   }
 
   signOut(): Promise<any> {
+    // I don't know if this works
+    this.firestore.firestore.disableNetwork();
     return this.afAuth.auth.signOut();
   }
 

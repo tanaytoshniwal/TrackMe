@@ -23,7 +23,6 @@ export class LoginPage {
 
   google(){
     this.auth.google_sign_in().then(()=>{
-      console.log(this.auth.check_user());
       if(this.auth.check_user()){
         this.app.getRootNav().setRoot(TabsPage);
       }

@@ -4,6 +4,9 @@ import { TododailyPage } from '../tododaily/tododaily';
 import { TodoweeklyPage } from '../todoweekly/todoweekly';
 import { TodomonthlyPage } from '../todomonthly/todomonthly';
 import { TodoyearlyPage } from '../todoyearly/todoyearly';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/Observable';
+import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the ToDoPage page.
@@ -19,7 +22,16 @@ import { TodoyearlyPage } from '../todoyearly/todoyearly';
 })
 export class ToDoPage {
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  daily_collection: AngularFirestoreCollection;
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, private firestore:AngularFirestore, private dataprovider: DataProvider) {
+    this.daily_collection = firestore.collection<any>('todo_daily');
+    this.daily_collection.valueChanges().subscribe(data=>{
+      for(let i=0; i<data.length; i++){
+        data[i].date = data[i].date.toDate();
+      }
+      this.dataprovider.todoDaily = data;
+    });
   }
 
   open(i){
