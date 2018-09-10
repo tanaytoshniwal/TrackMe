@@ -26,8 +26,6 @@ export class TododailyPage {
   tasks: string = 'Medium';
   obj = null;
 
-  refs;
-
   database: AngularFirestoreCollection;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider, private firestore: AngularFirestore, private authprovider: AuthserviceProvider) {
@@ -59,7 +57,7 @@ export class TododailyPage {
   }
 
 
-  edit(l, i){
+  edit(l){
     const prompt = this.alertCtrl.create({
     title: 'Edit Task',
     inputs: [
@@ -85,7 +83,7 @@ export class TododailyPage {
     prompt.present();
   }
 
-  status(l, i){
+  status(l){
     let temp;
     if(l.status == 'pending') {
       temp = 'completed';

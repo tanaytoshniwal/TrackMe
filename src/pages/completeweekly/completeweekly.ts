@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
+import { AuthserviceProvider } from '../../providers/authservice/authservice';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 /**
  * Generated class for the CompleteweeklyPage page.
@@ -18,12 +20,17 @@ export class CompleteweeklyPage {
 
   list = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private viewCtrl: ViewController, private dataProvider: DataProvider) {
+  database: AngularFirestoreCollection;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private viewCtrl: ViewController, private dataProvider: DataProvider, private firestore: AngularFirestore, private authprovider: AuthserviceProvider) {
     this.list = dataProvider.todoWeekly;
+    this.database = firestore.collection<any>('todo_weekly');
   }
 
   remove(l, i){
-    this.list.splice(i, 1);
+    this.database.doc(l._ref).delete().then(()=>{
+      this.list.splice(i, 1);
+    });
   }
 
   status(l){
@@ -34,7 +41,9 @@ export class CompleteweeklyPage {
     else { 
       temp = 'pending';
     }
-    l.status = temp;
+    this.database.doc(l._ref).update({status: temp}).then(data=>{
+      l.status = temp;
+    });
   }
 
   dismiss() {
