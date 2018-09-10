@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 */
 
 export interface Todo{
+  _ref: string,
   _id: string,
   task: String,
   priority: String,

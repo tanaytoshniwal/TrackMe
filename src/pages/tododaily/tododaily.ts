@@ -26,6 +26,8 @@ export class TododailyPage {
   tasks: string = 'Medium';
   obj = null;
 
+  refs;
+
   database: AngularFirestoreCollection;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider, private firestore: AngularFirestore, private authprovider: AuthserviceProvider) {
@@ -40,6 +42,9 @@ export class TododailyPage {
       this.date = new Date();
       this.obj = {_id: this.authprovider.check_user().uid, task: this.data, status: 'pending', priority: this.priority, date: this.date};
       this.database.add(this.obj).then(data=>{
+        //console.log(data.id);
+        this.database.doc(data.id).update({_ref: data.id});
+        this.obj._ref = data.id;
         this.list.push(this.obj);
         this.obj = null;
       });
@@ -48,12 +53,13 @@ export class TododailyPage {
   }
 
   remove(l, i){
-
-    this.list.splice(i, 1);
+    this.database.doc(this.list[i]._ref).delete().then(()=>{
+      this.list.splice(i, 1);
+    });
   }
 
 
-  edit(l){
+  edit(l, i){
     const prompt = this.alertCtrl.create({
     title: 'Edit Task',
     inputs: [
@@ -64,16 +70,14 @@ export class TododailyPage {
       ],
       buttons: [
         {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
+          text: 'Cancel'
         },
         {
           text: 'Save',
           handler: data => {
-            l.task = data.task;
-            console.log('Saved clicked');
+            this.database.doc(l._ref).update({task: data.task}).then(()=>{
+              l.task = data.task;
+            });
           }
         }
       ]
@@ -81,7 +85,7 @@ export class TododailyPage {
     prompt.present();
   }
 
-  status(l){
+  status(l, i){
     let temp;
     if(l.status == 'pending') {
       temp = 'completed';
@@ -89,7 +93,9 @@ export class TododailyPage {
     else { 
       temp = 'pending';
     }
-    l.status = temp;
+    this.database.doc(l._ref).update({status: temp}).then(data=>{
+      l.status = temp;
+    });
   }
 
   complete(){
