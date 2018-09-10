@@ -6,7 +6,7 @@ import { TodomonthlyPage } from '../todomonthly/todomonthly';
 import { TodoyearlyPage } from '../todoyearly/todoyearly';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
-import { DataProvider } from '../../providers/data/data';
+import { DataProvider, Todo } from '../../providers/data/data';
 import { AuthserviceProvider } from '../../providers/authservice/authservice';
 
 /**
@@ -24,15 +24,41 @@ import { AuthserviceProvider } from '../../providers/authservice/authservice';
 export class ToDoPage {
 
   daily_collection: AngularFirestoreCollection;
+  weekly_collection: AngularFirestoreCollection;
+  monthly_collection: AngularFirestoreCollection;
+  yearly_collection: AngularFirestoreCollection;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, private firestore:AngularFirestore, private dataprovider: DataProvider, private authprovider: AuthserviceProvider) {
     this.daily_collection = firestore.collection<any>('todo_daily', ref=>ref.where('_id', '==' ,authprovider.check_user().uid));
     this.daily_collection.valueChanges().subscribe(data=>{
-      for(let i=0; i<data.length; i++){
-        data[i].date = data[i].date.toDate();
-      }
-      this.dataprovider.todoDaily = data;
+      data = this.filter_data(data);
+      this.dataprovider.todoDaily = data.map(response=>response as Todo);
     });
+
+    this.weekly_collection = firestore.collection<any>('todo_weekly', ref=>ref.where('_id', '==' ,authprovider.check_user().uid));
+    this.weekly_collection.valueChanges().subscribe(data=>{
+      data = this.filter_data(data);
+      this.dataprovider.todoWeekly = data.map(response=>response as Todo);
+    });
+
+    this.monthly_collection = firestore.collection<any>('todo_monthly', ref=>ref.where('_id', '==' ,authprovider.check_user().uid));
+    this.monthly_collection.valueChanges().subscribe(data=>{
+      data = this.filter_data(data);
+      this.dataprovider.todoMonthly = data.map(response=>response as Todo);
+    });
+
+    this.yearly_collection = firestore.collection<any>('todo_yearly', ref=>ref.where('_id', '==' ,authprovider.check_user().uid));
+    this.yearly_collection.valueChanges().subscribe(data=>{
+      data = this.filter_data(data);
+      this.dataprovider.todoYearly = data.map(response=>response as Todo);
+    });
+  }
+
+  filter_data(data){
+    for(let i=0; i<data.length; i++){
+      data[i].date = data[i].date.toDate();
+    }
+    return data;    
   }
 
   open(i){

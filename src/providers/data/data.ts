@@ -8,29 +8,8 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 
-export interface TodoDaily{
+export interface Todo{
   _id: string,
-  task: String,
-  priority: String,
-  date: Date,
-  status: String
-}
-
-export interface TodoWeekly{
-  task: String,
-  priority: String,
-  date: Date,
-  status: String
-}
-
-export interface TodoMonthly{
-  task: String,
-  priority: String,
-  date: Date,
-  status: String
-}
-
-export interface TodoYearly{
   task: String,
   priority: String,
   date: Date,
@@ -57,34 +36,13 @@ export class DataProvider {
 
   totalAmount:Number;
 
-  todoDaily: Array<TodoDaily>;
+  todoDaily: Array<Todo>;
 
-  todoMonthly: Array<TodoMonthly> = [
-    {task: 'one_M', priority: 'High', date: new Date(), status: 'pending'},
-    {task: 'two_M', priority: 'High', date: new Date(), status: 'pending'},
-    {task: 'three_M', priority: 'Medium', date: new Date(), status: 'pending'},
-    {task: 'four_M', priority: 'Low', date: new Date(), status: 'pending'},
-    {task: 'five_M', priority: 'Low', date: new Date(), status: 'pending'},
-    {task: 'six_M', priority: 'Medium', date: new Date(), status: 'pending'}
-  ];
+  todoMonthly: Array<Todo>;
 
-  todoWeekly: Array<TodoWeekly> = [
-    {task: 'one_W', priority: 'High', date: new Date(), status: 'pending'},
-    {task: 'two_W', priority: 'High', date: new Date(), status: 'pending'},
-    {task: 'three_W', priority: 'Medium', date: new Date(), status: 'pending'},
-    {task: 'four_W', priority: 'Low', date: new Date(), status: 'pending'},
-    {task: 'five_W', priority: 'Low', date: new Date(), status: 'pending'},
-    {task: 'six_W', priority: 'Medium', date: new Date(), status: 'pending'}
-  ];
+  todoWeekly: Array<Todo>;
 
-  todoYearly: Array<TodoYearly> = [
-    {task: 'one_Y', priority: 'High', date: new Date(), status: 'pending'},
-    {task: 'two_Y', priority: 'High', date: new Date(), status: 'pending'},
-    {task: 'three_Y', priority: 'Medium', date: new Date(), status: 'pending'},
-    {task: 'four_Y', priority: 'Low', date: new Date(), status: 'pending'},
-    {task: 'five_Y', priority: 'Low', date: new Date(), status: 'pending'},
-    {task: 'six_Y', priority: 'Medium', date: new Date(), status: 'pending'}
-  ];
+  todoYearly: Array<Todo>;
 
   transactions: Array<Transaction> = [
     {amount: 101, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: false},

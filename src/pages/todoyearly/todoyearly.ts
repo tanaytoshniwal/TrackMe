@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { CompleteyearlyPage } from '../completeyearly/completeyearly';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { AuthserviceProvider } from '../../providers/authservice/authservice';
 
 /**
  * Generated class for the TodoyearlyPage page.
@@ -22,10 +24,13 @@ export class TodoyearlyPage {
   date:any = '';
   priority = 'Medium';
   tasks: string = 'Medium';
+  obj = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider) {
+  database: AngularFirestoreCollection;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider, private firestore: AngularFirestore, private authprovider: AuthserviceProvider) {
     this.list = dataProvider.todoYearly;
-
+    this.database = firestore.collection<any>('todo_yearly');
   }
 
   ionViewDidLoad() {
@@ -34,7 +39,11 @@ export class TodoyearlyPage {
   add(){
     if(this.data != null && this.data != ''){
       this.date = new Date();
-      this.list.push({task: this.data, status: 'pending', priority: this.priority, date: this.date});
+      this.obj = {_id: this.authprovider.check_user().uid, task: this.data, status: 'pending', priority: this.priority, date: this.date};
+      this.database.add(this.obj).then(data=>{
+        this.list.push(this.obj);
+        this.obj = null;
+      });
       this.data = '';
     }
   }
