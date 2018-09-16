@@ -60,7 +60,7 @@ export class ToDoPage {
     }
     return data;    
   }
- 
+
   open(i){
     switch(i){
       case 0:{
