@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DataProvider, Transaction } from '../../providers/data/data';
 import { AddtransactionPage } from '../addtransaction/addtransaction';
+import { AngularFirestoreCollection } from '@angular/fire/firestore';
 
 /**
  * Generated class for the TransactionsPage page.
@@ -18,6 +19,8 @@ import { AddtransactionPage } from '../addtransaction/addtransaction';
 export class TransactionsPage {
 
   transactions:Array<Transaction> = [];
+
+  transactions_collection: AngularFirestoreCollection;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private modalCtrl: ModalController) {
     this.transactions = data.transactions;
