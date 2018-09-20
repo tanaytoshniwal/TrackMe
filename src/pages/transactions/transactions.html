@@ -11,7 +11,7 @@
       <div margin>
         <h2><b>{{trans.amount}}</b> Bucks</h2>
         <h4>Paid to: {{trans.paid_to}}</h4>
-        <h4>{{data.formatDate(trans.date)}}</h4>
+        <h4>{{dataprovider.formatDate(trans.date, false)}}</h4>
       </div>
     </ion-item>
     <ion-card-content>
@@ -20,13 +20,13 @@
 
     <ion-row>
       <ion-col text-center *ngIf="trans.lend">
-        <button ion-button icon-start clear (click)="gotback(i)">
+        <button ion-button icon-start clear (click)="gotback(i, trans)">
           <ion-icon name="ios-done-all-outline" color="green"></ion-icon>
           <div>Got it back</div>
         </button>
       </ion-col>
       <ion-col text-center>
-        <button ion-button icon-start clear (click)="remove(i)">
+        <button ion-button icon-start clear (click)="remove(i, trans)">
           <ion-icon name="ios-trash-outline" color="red"></ion-icon>
           <div>Delete</div>
         </button>

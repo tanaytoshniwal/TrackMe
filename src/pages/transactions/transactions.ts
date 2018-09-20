@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DataProvider, Transaction } from '../../providers/data/data';
 import { AddtransactionPage } from '../addtransaction/addtransaction';
-import { AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { AuthserviceProvider } from '../../providers/authservice/authservice';
 
 /**
  * Generated class for the TransactionsPage page.
@@ -22,8 +23,20 @@ export class TransactionsPage {
 
   transactions_collection: AngularFirestoreCollection;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private modalCtrl: ModalController) {
-    this.transactions = data.transactions;
+  constructor(public navCtrl: NavController, private firestore: AngularFirestore, public navParams: NavParams, private dataprovider: DataProvider, private modalCtrl: ModalController, private auth: AuthserviceProvider) {
+    this.transactions_collection = firestore.collection<any>('transactions', ref=>ref.where('_id', '==' ,auth.check_user().uid));
+    this.transactions_collection.valueChanges().subscribe(data=>{
+      data = this.filter_data(data);
+      this.dataprovider.transactions = data.map(res=>res as Transaction);
+      this.transactions = this.dataprovider.transactions;
+    });
+  }
+
+  filter_data(data){
+    for(let i=0; i<data.length; i++){
+      data[i].date = data[i].date.toDate();
+    }
+    return data;    
   }
 
   ionViewDidLoad() {
@@ -34,11 +47,11 @@ export class TransactionsPage {
     modal.present();
   }
 
-  gotback(i){
-    this.transactions[i].lend = false;
+  gotback(i, o){
+    this.transactions_collection.doc(o._ref).update({lend: false});
   }
 
-  remove(i){
-    this.transactions.splice(i, 1);
+  remove(i, o){
+    this.transactions_collection.doc(o._ref).delete();
   }
 }

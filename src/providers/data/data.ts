@@ -61,7 +61,7 @@ export class DataProvider {
     
   }
 
-  formatDate(date) {
+  formatDate(date, time) {
     var monthNames = [
       "January", "February", "March",
       "April", "May", "June", "July",
@@ -72,8 +72,10 @@ export class DataProvider {
     var day = date.getDate();
     var monthIndex = date.getMonth();
     var year = date.getFullYear();
-  
-    return day + ' ' + monthNames[monthIndex] + ' ' + year + ' | ' + date.toLocaleTimeString();
+    if(time)
+      return day + ' ' + monthNames[monthIndex] + ' ' + year + ' | ' + date.toLocaleTimeString();
+    else
+      return day + ' ' + monthNames[monthIndex] + ' ' + year;
   }
 
 }

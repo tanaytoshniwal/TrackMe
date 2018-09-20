@@ -50,14 +50,12 @@ export class AddtransactionPage {
     }
   }
 
-  c(){
-    console.log(this.date)
-  }
-
   add(){
     let new_date;
     if(this.date == null)
       new_date = new Date();
+    else
+      new_date = new Date(this.date)
 
     this.obj = {_id: this.auth.check_user().uid, amount: this.amount, date: new_date, reason: this.reason, paid_to: this.paid_to, lend: this.lend};
     this.database.add(this.obj).then(res=>{
