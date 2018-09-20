@@ -32,7 +32,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Date of Transaction</ion-label>
-      <ion-datetime margin displayFormat="MMM DD YYYY" [(ngModel)]="date"></ion-datetime>
+      <ion-datetime margin displayFormat="MMM DD YYYY" [(ngModel)]="date" (input)="c()"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Lent to someone?</ion-label>

@@ -18,6 +18,8 @@ export interface Todo{
 }
 
 export interface Transaction{
+  _ref: string,
+  _id: string,
   amount: Number,
   date: Date,
   reason: String,
@@ -45,13 +47,7 @@ export class DataProvider {
 
   todoYearly: Array<Todo>;
 
-  transactions: Array<Transaction> = [
-    {amount: 101, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: false},
-    {amount: 1011, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true},
-    {amount: 11, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true},
-    {amount: 1101, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: false},
-    {amount: 1, date: new Date(), reason: 'sample', paid_to: 'sample_person', lend: true}
-  ];
+  transactions: Array<Transaction>;
 
   notes = [
     {title: 'One', content: 'sample', date: new Date(), pinned: false},
