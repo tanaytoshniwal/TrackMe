@@ -54,7 +54,7 @@
                 <button ion-fab (click)="remove(l, i)" color="danger"><ion-icon name="ios-trash-outline"></ion-icon></button>
               </ion-fab-list>
             </ion-fab>
-            <p>{{dataProvider.formatDate(l.date)}}</p>
+            <p>{{dataProvider.formatDate(l.date, true)}}</p>
           </ion-card-header>
           <ion-card-content>
             <p class="my-2">{{l.task}}</p>

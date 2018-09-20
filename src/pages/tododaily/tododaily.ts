@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
-import { DataProvider } from '../../providers/data/data';
+import { DataProvider, Todo } from '../../providers/data/data';
 import { CompletedailyPage } from '../completedaily/completedaily';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AuthserviceProvider } from '../../providers/authservice/authservice';
@@ -29,8 +29,19 @@ export class TododailyPage {
   database: AngularFirestoreCollection;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private dataProvider: DataProvider, private firestore: AngularFirestore, private authprovider: AuthserviceProvider) {
-    this.list = dataProvider.todoDaily;
-    this.database = firestore.collection<any>('todo_daily');
+    this.database = firestore.collection<any>('todo_daily', ref=>ref.where('_id', '==' ,authprovider.check_user().uid));
+    this.database.valueChanges().subscribe(data=>{
+      data = this.filter_data(data);
+      this.dataProvider.todoDaily = data.map(response=>response as Todo);
+      this.list = dataProvider.todoDaily;
+    });
+  }
+
+  filter_data(data){
+    for(let i=0; i<data.length; i++){
+      data[i].date = data[i].date.toDate();
+    }
+    return data;    
   }
 
   ionViewDidLoad() {
@@ -43,7 +54,6 @@ export class TododailyPage {
         //console.log(data.id);
         this.database.doc(data.id).update({_ref: data.id});
         this.obj._ref = data.id;
-        this.list.push(this.obj);
         this.obj = null;
       });
       this.data = '';
@@ -51,9 +61,7 @@ export class TododailyPage {
   }
 
   remove(l, i){
-    this.database.doc(this.list[i]._ref).delete().then(()=>{
-      this.list.splice(i, 1);
-    });
+    this.database.doc(this.list[i]._ref).delete();
   }
 
 
@@ -73,9 +81,7 @@ export class TododailyPage {
         {
           text: 'Save',
           handler: data => {
-            this.database.doc(l._ref).update({task: data.task}).then(()=>{
-              l.task = data.task;
-            });
+            this.database.doc(l._ref).update({task: data.task});
           }
         }
       ]
@@ -91,9 +97,7 @@ export class TododailyPage {
     else { 
       temp = 'pending';
     }
-    this.database.doc(l._ref).update({status: temp}).then(data=>{
-      l.status = temp;
-    });
+    this.database.doc(l._ref).update({status: temp});
   }
 
   complete(){
