@@ -36,10 +36,18 @@ export interface Note{
   pinned: Boolean
 }
 
+export interface Remainder{
+  _ref: string,
+  _id: string,
+  title: String,
+  date: Date,
+  content: String
+}
+
 @Injectable()
 export class DataProvider {
-
-  totalAmount:Number;
+  // maybe used later
+  //totalAmount:Number;
 
   todoDaily: Array<Todo>;
 
@@ -48,6 +56,8 @@ export class DataProvider {
   todoWeekly: Array<Todo>;
 
   todoYearly: Array<Todo>;
+
+  remaiders: Array<Remainder>;
 
   transactions: Array<Transaction>;
 

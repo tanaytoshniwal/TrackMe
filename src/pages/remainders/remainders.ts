@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthserviceProvider } from '../../providers/authservice/authservice';
+import { DataProvider } from '../../providers/data/data';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 /**
  * Generated class for the RemaindersPage page.
@@ -15,7 +18,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RemaindersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  remainders = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthserviceProvider, private dataprovider: DataProvider, private firestore: AngularFirestore) {
+    
   }
 
   ionViewDidLoad() {
