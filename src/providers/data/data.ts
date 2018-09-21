@@ -57,7 +57,10 @@ export class DataProvider {
 
   todoYearly: Array<Todo>;
 
-  remaiders: Array<Remainder>;
+  remaiders: Array<Remainder> = [
+    {_id: '', _ref: '', title: 'sample', date: new Date(), content: 'sample content'},
+    {_id: '', _ref: '', title: 'sample 2', date: new Date(), content: 'sample content 2'}
+  ];
 
   transactions: Array<Transaction>;
 

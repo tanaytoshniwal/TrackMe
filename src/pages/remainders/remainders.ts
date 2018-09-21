@@ -21,7 +21,7 @@ export class RemaindersPage {
   remainders = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthserviceProvider, private dataprovider: DataProvider, private firestore: AngularFirestore) {
-    
+    this.remainders = dataprovider.remaiders;
   }
 
   ionViewDidLoad() {

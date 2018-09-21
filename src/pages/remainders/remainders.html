@@ -17,38 +17,14 @@
   <div class="nothing" *ngIf="remainders.length == 0">
     <h1>There's Nothing here...</h1>
   </div>
-  <ion-card *ngFor = 'let trans of transactions; let i = index;'>
-    <ion-item>
-      <ion-icon name="ios-cash-outline" item-start>
-      </ion-icon>
-      <div margin>
-        <h2><b>{{trans.amount}}</b> Bucks</h2>
-        <h4>Paid to: {{trans.paid_to}}</h4>
-        <h4>{{dataprovider.formatDate(trans.date, false)}}</h4>
-      </div>
-    </ion-item>
+  <ion-card *ngFor = 'let obj of remainders; let i = index;'>
     <ion-card-content>
-      <p>{{trans.reason}}</p>
+      {{obj.title}}
     </ion-card-content>
-
-    <ion-row>
-      <ion-col text-center *ngIf="trans.lend">
-        <button ion-button icon-start clear (click)="gotback(i, trans)">
-          <ion-icon name="ios-done-all-outline" color="green"></ion-icon>
-          <div>Got it back</div>
-        </button>
-      </ion-col>
-      <ion-col text-center>
-        <button ion-button icon-start clear (click)="remove(i, trans)">
-          <ion-icon name="ios-trash-outline" color="red"></ion-icon>
-          <div>Delete</div>
-        </button>
-      </ion-col>
-    </ion-row>
   </ion-card>
     
   <ion-fab right bottom (click)="openModal()">
-    <button ion-fab color="blue"><ion-icon name="add"></ion-icon></button>
+    <button ion-fab color="blue"><ion-icon name="ios-bowtie-outline"></ion-icon></button>
   </ion-fab>
 
 </ion-content>
