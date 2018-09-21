@@ -28,6 +28,8 @@ export interface Transaction{
 }
 
 export interface Note{
+  _ref: string,
+  _id: string,
   title: String,
   content: String,
   date: Date,
@@ -49,13 +51,7 @@ export class DataProvider {
 
   transactions: Array<Transaction>;
 
-  notes = [
-    {title: 'One', content: 'sample', date: new Date(), pinned: false},
-    {title: 'Two', content: 'sample', date: new Date(), pinned: true},
-    {title: 'Three', content: 'sample', date: new Date(), pinned: false},
-    {title: 'Four', content: 'sample', date: new Date(), pinned: false},
-    {title: 'Five', content: 'sample', date: new Date(), pinned: true}
-  ];
+  notes: Array<Note>;
 
   constructor(public http: HttpClient) {
     

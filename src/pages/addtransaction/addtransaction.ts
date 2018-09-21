@@ -17,8 +17,6 @@ import { AuthserviceProvider } from '../../providers/authservice/authservice';
   templateUrl: 'addtransaction.html',
 })
 export class AddtransactionPage {
-
-  transactions = [];
   amount = '';
   reason = '';
   paid_to = '';
@@ -30,7 +28,6 @@ export class AddtransactionPage {
   database: AngularFirestoreCollection;
 
   constructor(public navCtrl: NavController, private auth: AuthserviceProvider, private firestore: AngularFirestore, public navParams: NavParams, private viewCtrl: ViewController, private data: DataProvider) {
-    this.transactions = [];
     this.database = firestore.collection<any>('transactions');
   }
 
@@ -61,7 +58,6 @@ export class AddtransactionPage {
     this.database.add(this.obj).then(res=>{
       this.database.doc(res.id).update({_ref: res.id});
       this.obj._ref = res.id;
-      this.transactions.push(this.obj);
       this.obj = null;
     });
 

@@ -25,7 +25,7 @@
       <div margin>
         <h2><b>{{note.title}}</b></h2>
         <h4 *ngIf="note.pinned"><ion-icon name="ios-bookmark" color="green"></ion-icon> Pinned</h4>
-        <h4>{{data.formatDate(note.date)}}</h4>
+        <h4>{{dataprovider.formatDate(note.date, false)}}</h4>
       </div>
     </ion-item>
     <ion-card-content>
@@ -34,14 +34,14 @@
 
     <ion-row>
       <ion-col text-center>
-        <button ion-button icon-start clear (click)="pin_switch(i)">
+        <button ion-button icon-start clear (click)="pin_switch(i, note)">
           <ion-icon name="ios-bookmark-outline" color="green"></ion-icon>
           <div *ngIf="note.pinned">Unpin</div>
           <div *ngIf="!note.pinned">Pin</div>
         </button>
       </ion-col>
       <ion-col text-center>
-        <button ion-button icon-start clear (click)="remove(i)">
+        <button ion-button icon-start clear (click)="remove(i, note)">
           <ion-icon name="ios-trash-outline" color="red"></ion-icon>
           <div>Delete</div>
         </button>

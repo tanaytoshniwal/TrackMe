@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DataProvider, Note } from '../../providers/data/data';
 import { AddnotePage } from '../addnote/addnote';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { AuthserviceProvider } from '../../providers/authservice/authservice';
 
 /**
  * Generated class for the NotesPage page.
@@ -19,19 +21,33 @@ export class NotesPage {
 
   notes:Array<Note> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private data: DataProvider, private modalCtrl: ModalController) {
-    this.notes = data.notes;
+  notes_collection: AngularFirestoreCollection;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dataprovider: DataProvider, private auth: AuthserviceProvider, private modalCtrl: ModalController, private firestore: AngularFirestore) {
+    this.notes_collection = firestore.collection<any>('notes', ref=>ref.where('_id', '==' ,auth.check_user().uid));
+    this.notes_collection.valueChanges().subscribe(data=>{
+      data = this.filter_data(data);
+      this.dataprovider.notes = data.map(res=> res as Note);
+      this.notes = dataprovider.notes;
+    });
+  }
+
+  filter_data(data){
+    for(let i=0; i<data.length; i++){
+      data[i].date = data[i].date.toDate();
+    }
+    return data;    
   }
 
   ionViewDidLoad() {
   }
 
-  pin_switch(i){
-    this.notes[i].pinned = !this.notes[i].pinned;
+  pin_switch(i, o){
+    this.notes_collection.doc(o._ref).update({pinned: !o.pinned});
   }
 
-  remove(i){
-    this.notes.splice(i, 1);
+  remove(i, o){
+    this.notes_collection.doc(o._ref).delete();
   }
 
   openModal(){
