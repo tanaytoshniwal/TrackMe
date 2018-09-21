@@ -4,6 +4,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <div class="nothing" *ngIf="transactions.length == 0">
+    <h1>There's Nothing here...</h1>
+  </div>
   <ion-card *ngFor = 'let trans of transactions; let i = index;'>
     <ion-item>
       <ion-icon name="ios-cash-outline" item-start>

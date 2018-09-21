@@ -39,6 +39,9 @@
       </ion-segment-button>
     </ion-segment>
     <div [ngSwitch] = "tasks">
+      <div class="nothing" *ngIf="list.length == 0">
+        <h1>There's Nothing here...</h1>
+      </div>
     <ion-list *ngFor="let l of list; let i = index;" class="animated fadeIn my-2">
       <div class="" *ngIf="l.status == 'pending'">
         <ion-card *ngSwitchCase="l.priority">

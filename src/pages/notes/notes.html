@@ -14,7 +14,9 @@
 
 
 <ion-content padding>
-    
+  <div class="nothing" *ngIf="notes.length == 0">
+    <h1>There's Nothing here...</h1>
+  </div>
   <ion-fab right bottom (click)="openModal()">
     <button ion-fab color="blue"><ion-icon name="ios-brush-outline"></ion-icon></button>
   </ion-fab>
@@ -24,7 +26,6 @@
       </ion-icon>
       <div margin>
         <h2><b>{{note.title}}</b></h2>
-        <h4 *ngIf="note.pinned"><ion-icon name="ios-bookmark" color="green"></ion-icon> Pinned</h4>
         <h4>{{dataprovider.formatDate(note.date, false)}}</h4>
       </div>
     </ion-item>
@@ -35,7 +36,8 @@
     <ion-row>
       <ion-col text-center>
         <button ion-button icon-start clear (click)="pin_switch(i, note)">
-          <ion-icon name="ios-bookmark-outline" color="green"></ion-icon>
+          <ion-icon *ngIf="!note.pinned" name="ios-bookmark-outline" color="green"></ion-icon>
+          <ion-icon *ngIf="note.pinned" name="ios-bookmark" color="green"></ion-icon>
           <div *ngIf="note.pinned">Unpin</div>
           <div *ngIf="!note.pinned">Pin</div>
         </button>
