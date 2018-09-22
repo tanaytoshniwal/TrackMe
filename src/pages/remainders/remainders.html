@@ -19,7 +19,9 @@
   </div>
   <ion-card *ngFor = 'let obj of remainders; let i = index;'>
     <ion-card-content>
-      {{obj.title}}
+      <div>{{obj.title}}</div>
+      <div>{{dataprovider.formatDate(obj.date, true)}}</div>
+      <div>{{obj.content}}</div>
     </ion-card-content>
   </ion-card>
     
