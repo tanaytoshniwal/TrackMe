@@ -35,3 +35,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 
 src/environments/environment.ts
+package-lock.json
