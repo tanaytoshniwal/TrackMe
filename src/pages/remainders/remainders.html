@@ -18,10 +18,17 @@
     <h1>There's Nothing here...</h1>
   </div>
   <ion-card *ngFor = 'let obj of remainders; let i = index;'>
+    <ion-item>
+      <ion-icon name="ios-pricetags-outline" item-start>
+      </ion-icon>
+      <div margin>
+        <h2><b>{{obj.title}}</b></h2>
+        <h4>Date: {{obj.date}}</h4>
+        <h4>Time: {{obj.time}}</h4>
+      </div>
+    </ion-item>
     <ion-card-content>
-      <div>{{obj.title}}</div>
-      <div>{{dataprovider.formatDate(obj.date, true)}}</div>
-      <div>{{obj.content}}</div>
+      <p>{{obj.description}}</p>
     </ion-card-content>
   </ion-card>
     

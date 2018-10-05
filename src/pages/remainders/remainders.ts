@@ -27,8 +27,8 @@ export class RemaindersPage {
     this.remainder_collection = firestore.collection<any>('remainders', ref=>ref.where('_id', '==' ,auth.check_user().uid));
     this.remainder_collection.valueChanges().subscribe(res => {
       // res = this.filter_data(res);
-      // this.dataprovider.remaiders = res.map(res => res as Remainder);
-      // this.remainders = dataprovider.remaiders;
+      this.dataprovider.remaiders = res.map(res => res as Remainder);
+      this.remainders = dataprovider.remaiders;
     });
   }
 
