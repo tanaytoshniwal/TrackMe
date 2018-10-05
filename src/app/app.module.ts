@@ -25,6 +25,7 @@ import { CompleteweeklyPage } from '../pages/completeweekly/completeweekly';
 import { CompletemonthlyPage } from '../pages/completemonthly/completemonthly';
 import { CompleteyearlyPage } from '../pages/completeyearly/completeyearly';
 import { LoginPage } from '../pages/login/login';
+import { AddremainderPage } from '../pages/addremainder/addremainder';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -42,6 +43,7 @@ import { AuthserviceProvider } from '../providers/authservice/authservice';
     NotesPage,
     RemaindersPage,
     AddnotePage,
+    AddremainderPage,
     ProfilePage,
     AddtransactionPage,
     TododailyPage,
@@ -70,6 +72,7 @@ import { AuthserviceProvider } from '../providers/authservice/authservice';
     TransactionsPage,
     NotesPage,
     AddnotePage,
+    AddremainderPage,
     RemaindersPage,
     ProfilePage,
     AddtransactionPage,

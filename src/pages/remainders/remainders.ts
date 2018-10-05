@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AuthserviceProvider } from '../../providers/authservice/authservice';
 import { DataProvider } from '../../providers/data/data';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AddremainderPage } from '../addremainder/addremainder';
 
 /**
  * Generated class for the RemaindersPage page.
@@ -20,11 +21,16 @@ export class RemaindersPage {
 
   remainders = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthserviceProvider, private dataprovider: DataProvider, private firestore: AngularFirestore) {
+  constructor(public navCtrl: NavController, private firestore: AngularFirestore, public navParams: NavParams, private dataprovider: DataProvider, private modalCtrl: ModalController, private auth: AuthserviceProvider) {
     this.remainders = dataprovider.remaiders;
   }
 
   ionViewDidLoad() {
+  }
+
+  openModal() {
+    let modal = this.modalCtrl.create(AddremainderPage);
+    modal.present();
   }
 
 }

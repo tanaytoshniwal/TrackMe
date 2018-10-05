@@ -1,0 +1,35 @@
+<!--
+  Generated template for the AddremainderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="blue">
+    <ion-title>Add new Remainder</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-fab top right edge (click)="dismiss()">
+    <button ion-fab mini color="danger"><ion-icon name="ios-close-outline"></ion-icon></button>
+  </ion-fab>
+  <div margin>
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="title" (input)="check()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date of Remainder</ion-label>
+      <ion-datetime margin displayFormat="MMM DD YYYY" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="description" (input)="check()"></ion-input>
+    </ion-item>
+  </div>
+  <button ion-button round block (click)="add()" *ngIf="submitable">Add</button>
+</ion-content>
