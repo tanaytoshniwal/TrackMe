@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { DataProvider } from '../../providers/data/data';
 import { AuthserviceProvider } from '../../providers/authservice/authservice';
+import { Time } from '@angular/common';
 
 /**
  * Generated class for the AddremainderPage page.
@@ -21,7 +22,7 @@ export class AddremainderPage {
   date = null;
   title = '';
   description = '';
-  submitable = false;
+  time:Time = null;
   obj = null;
 
   database: AngularFirestoreCollection;
@@ -31,12 +32,10 @@ export class AddremainderPage {
   }
 
   check(){
-    if(this.title != '' && this.date != null && this.description != ''){
-      this.submitable = true;
+    if(this.title != '' && this.date != null && this.description != '' && this.time != null){
+      return true;
     }
-    else{
-      this.submitable = false;
-    }
+    return false;
   }
 
   dismiss() {
@@ -44,14 +43,16 @@ export class AddremainderPage {
   }
 
   add(){
-    this.obj = {_id: this.auth.check_user().uid, title: this.title, date: this.date, description: this.description};
-    this.database.add(this.obj).then(res=>{
-      this.database.doc(res.id).update({_ref: res.id});
-      this.obj._ref = res.id;
-      this.obj = null;
-    });
+    if(this.check()){
+      this.obj = {_id: this.auth.check_user().uid, title: this.title, date: this.date, description: this.description, time: this.time};
+      this.database.add(this.obj).then(res=>{
+        this.database.doc(res.id).update({_ref: res.id});
+        this.obj._ref = res.id;
+        this.obj = null;
+      });
 
-    this.dismiss();
+      this.dismiss();
+    }
   }
 
 }

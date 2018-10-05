@@ -20,16 +20,20 @@
   <div margin>
     <ion-item>
       <ion-label floating>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="title" (input)="check()"></ion-input>
+      <ion-input type="text" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="description"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Date of Remainder</ion-label>
       <ion-datetime margin displayFormat="MMM DD YYYY" [(ngModel)]="date"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Description</ion-label>
-      <ion-input type="text" [(ngModel)]="description" (input)="check()"></ion-input>
+      <ion-label>Start Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="time"></ion-datetime>
     </ion-item>
   </div>
-  <button ion-button round block (click)="add()" *ngIf="submitable">Add</button>
+  <button ion-button round block (click)="add()">Add</button>
 </ion-content>

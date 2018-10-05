@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Time } from '@angular/common';
 
 /*
   Generated class for the DataProvider provider.
@@ -41,7 +42,8 @@ export interface Remainder{
   _id: string,
   title: String,
   date: Date,
-  content: String
+  description: String,
+  time: Time
 }
 
 @Injectable()
@@ -57,10 +59,7 @@ export class DataProvider {
 
   todoYearly: Array<Todo>;
 
-  remaiders: Array<Remainder> = [
-    {_id: '', _ref: '', title: 'sample', date: new Date(), content: 'sample content'},
-    {_id: '', _ref: '', title: 'sample 2', date: new Date(), content: 'sample content 2'}
-  ];
+  remaiders: Array<Remainder>;
 
   transactions: Array<Transaction>;
 
