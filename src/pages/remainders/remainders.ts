@@ -42,6 +42,10 @@ export class RemaindersPage {
   ionViewDidLoad() {
   }
 
+  remove(i, note) {
+    this.remainder_collection.doc(note._ref).delete();
+  }
+
   openModal() {
     let modal = this.modalCtrl.create(AddremainderPage);
     modal.present();

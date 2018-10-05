@@ -30,6 +30,14 @@
     <ion-card-content>
       <p>{{obj.description}}</p>
     </ion-card-content>
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button icon-start clear (click)="remove(i, obj)">
+          <ion-icon name="ios-trash-outline" color="red"></ion-icon>
+          <div>Delete</div>
+        </button>
+      </ion-col>
+    </ion-row>
   </ion-card>
     
   <ion-fab right bottom (click)="openModal()">
