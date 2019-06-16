@@ -2,7 +2,19 @@
   <ion-menu>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-row padding-horizontal align-items-center>
+            <ion-col size="3" padding-vertical align-items-center>
+              <ion-avatar margin-vertical>
+                <img src="https://tanaytoshniwal.me/assets/images/icon_favo.jpg">
+              </ion-avatar>
+            </ion-col>
+            <ion-col padding-vertical align-items-center>
+              <div margin-vertical>
+                <h4 no-margin margin-start><strong>Tanay Toshniwal</strong></h4>
+                <h6 no-margin margin-start>View Profile</h6>
+              </div>
+            </ion-col>
+          </ion-row>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -19,23 +31,23 @@
   <ion-router-outlet main></ion-router-outlet>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="tab1">
+      <ion-tab-button tab="todo">
         <ion-icon name="paper"></ion-icon>
         <ion-label>ToDo</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="tab2">
+      <ion-tab-button tab="transactions">
         <ion-icon name="cash"></ion-icon>
         <ion-label>Transactions</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="tab3">
+      <ion-tab-button tab="notes">
         <ion-icon name="clipboard"></ion-icon>
         <ion-label>Notes</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="tab3">
+      <ion-tab-button tab="remainders">
         <ion-icon name="calendar"></ion-icon>
         <ion-label>Remainders</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="tab3">
+      <ion-tab-button tab="fitness">
         <ion-icon name="leaf"></ion-icon>
         <ion-label>Fitness</ion-label>
       </ion-tab-button>
