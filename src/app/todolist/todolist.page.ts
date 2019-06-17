@@ -25,7 +25,6 @@ export class TodolistPage implements OnInit {
   }
   
   ngOnInit() {
-    console.log('asdfasdf');
     switch(this.pageType){
       case 0:
         this.title = 'Daily Tasks';
@@ -64,7 +63,6 @@ export class TodolistPage implements OnInit {
       this.list.push(this.obj);
       this.data = '';
     }
-    console.log(this.dataService.todoDaily);
   }
 
   remove(l, i){
