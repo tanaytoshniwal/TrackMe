@@ -5,7 +5,7 @@ export interface Todo{
   task: String,
   priority: String,
   date: Date,
-  status: String
+  type: Number
 }
 
 export interface Transaction{
@@ -37,11 +37,13 @@ export class DataService {
   todoMonthly: Array<Todo> = [];
   todoWeekly: Array<Todo> = [];
   todoYearly: Array<Todo> = [];
+  todoCompleted: Array<Todo> = [];
   todo = {
     daily: this.todoDaily,
     weekly: this.todoWeekly,
     monthly: this.todoMonthly,
-    yearly: this.todoYearly
+    yearly: this.todoYearly,
+    completed: this.todoCompleted
   }
 
   remaiders: Array<Remainder> = [];

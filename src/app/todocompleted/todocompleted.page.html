@@ -1,0 +1,40 @@
+<ion-header class="tmtheme-bg">
+  <ion-toolbar color="tmtheme">
+    <ion-buttons slot="start" padding>
+      <ion-icon name="arrow-round-back" color="light" (click)="close()"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      <ion-text color="light"><strong>Completed Tasks</strong></ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="nothing" *ngIf="list.length == 0">
+    <h1>There's Nothing here...</h1>
+  </div>
+  <ion-list *ngFor="let l of list; let i = index;" class="animated fadeIn my-2">
+    <div>
+      <ion-card>
+        <div>
+          <ion-card-header>
+            <ion-fab vertical="top" horizontal="end">
+              <ion-fab-button color="info" size="small">
+                <ion-icon name="more"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-list side="start">
+                <ion-fab-button (click)="undo(l, i)" color="success"><ion-icon name="refresh"></ion-icon></ion-fab-button>
+                <ion-fab-button (click)="remove(l, i)" color="danger"><ion-icon name="trash"></ion-icon></ion-fab-button>
+              </ion-fab-list>
+            </ion-fab>
+            <p>{{dataService.formatDate(l.date, true)}}</p>
+            <p>{{name(l.type)}}</p>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="my-2">{{l.task}}</p>
+          </ion-card-content>
+        </div>
+      </ion-card>
+    </div>
+  </ion-list>
+</ion-content>

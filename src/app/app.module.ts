@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { TodolistPageModule } from './todolist/todolist.module';
+import { TodocompletedPageModule } from './todocompleted/todocompleted.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,8 @@ import { TodolistPageModule } from './todolist/todolist.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    TodolistPageModule
+    TodolistPageModule,
+    TodocompletedPageModule
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { TodolistPage } from '../todolist/todolist.page';
+import { TodocompletedPage } from '../todocompleted/todocompleted.page';
 
 @Component({
   selector: 'app-todo',
@@ -18,6 +19,13 @@ export class TodoPage implements OnInit {
     const modal = await this.modalController.create({
       component: TodolistPage,
       componentProps: { pageType: i }
+    });
+    return await modal.present();
+  }
+
+  async openComplete(){
+    const modal = await this.modalController.create({
+      component: TodocompletedPage
     });
     return await modal.present();
   }

@@ -9,7 +9,7 @@ import { DataService } from '../data.service';
 })
 export class TodolistPage implements OnInit {
 
-  @Input() pageType: number;
+  @Input() pageType: Number;
   title: string;
 
   list = [];
@@ -56,9 +56,9 @@ export class TodolistPage implements OnInit {
       this.obj = {
         //_id: this.authprovider.check_user().uid,
         task: this.data,
-        status: 'pending',
         priority: this.priority,
-        date: this.date
+        date: this.date,
+        type: this.pageType
       };
       this.list.push(this.obj);
       this.data = '';
@@ -97,14 +97,16 @@ export class TodolistPage implements OnInit {
   }
 
   status(l, i){
-    let temp;
-    if(l.status == 'pending') {
-      temp = 'completed';
-    }
-    else { 
-      temp = 'pending';
-    }
-    this.list[i].status = temp;
+    this.todo.completed.push(this.list[i]);
+    this.list.splice(i, 1);
+    // let temp;
+    // if(l.status == 'pending') {
+    //   temp = 'completed';
+    // }
+    // else { 
+    //   temp = 'pending';
+    // }
+    // this.list[i].status = temp;
     // this.database.doc(l._ref).update({status: temp});
   }
 
