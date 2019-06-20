@@ -1,4 +1,16 @@
-.background{
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(139,120,230,1) 35%, rgba(0,212,255,1) 100%) !important;
+.text {
+    margin: 18px auto;
+    font-family: 'Mali', cursive;
+    font-size: 3em;
+    color: white;
+    animation-name: blink;
+    animation-duration: .75s;
+    animation-iteration-count: infinite;
+}
+@keyframes blink{
+    30%{ color: white; }
+    40%{ color: black; }
+    50%{ color: white; }
+    60%{ color: black; }
+    70%{ color: white; }
 }
