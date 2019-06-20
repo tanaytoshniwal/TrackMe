@@ -11,7 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { TodolistPageModule } from './todolist/todolist.module';
 import { TodocompletedPageModule } from './todocompleted/todocompleted.module';
+import { HomePageModule } from './home/home.module'
 
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,11 +25,15 @@ import { TodocompletedPageModule } from './todocompleted/todocompleted.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     TodolistPageModule,
-    TodocompletedPageModule
+    TodocompletedPageModule,
+    HomePageModule,
+    AngularFireModule.initializeApp(environment.config),
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
