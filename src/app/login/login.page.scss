@@ -14,3 +14,17 @@
     60%{ color: black; }
     70%{ color: white; }
 }
+.m{
+    height: 70%;
+    align-items: center;
+    justify-content: center;
+}
+ion-content{
+    --background: linear-gradient(to right bottom, #8b78e6, #81519b, #61325b, #361c2a, #000000);
+}
+.foot {
+    position: absolute;
+    bottom: 0;
+    margin: 5px auto;
+    padding-bottom: 9px;
+}
