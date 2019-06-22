@@ -16,7 +16,8 @@ const routes: Routes = [
       { path: 'remainders', loadChildren: './remainders/remainders.module#RemaindersPageModule' },
       { path: 'fitness', loadChildren: './fitness/fitness.module#FitnessPageModule' }
     ]
-  }
+  },
+  { path: 'addtransaction', loadChildren: './addtransaction/addtransaction.module#AddtransactionPageModule' }
 ];
 
 @NgModule({

@@ -1,0 +1,38 @@
+<ion-header class="tmtheme-bg">
+  <ion-toolbar color="tmtheme">
+    <ion-buttons slot="start" padding>
+      <ion-icon name="arrow-round-back" color="light" (click)="close()"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      <ion-text color="light"><strong>Completed Tasks</strong></ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="light">
+  <div margin>
+    <ion-item>
+      <ion-label floating>Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="amount" (input)="check()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Reason</ion-label>
+      <ion-input type="text" [(ngModel)]="reason" (input)="check()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Paid to</ion-label>
+      <ion-input type="text" [(ngModel)]="paid_to" (input)="check()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date of Transaction</ion-label>
+      <ion-datetime margin displayFormat="MMM DD YYYY" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lent to someone?</ion-label>
+      <ion-toggle margin checked="false" [(ngModel)]="lend"></ion-toggle>
+    </ion-item>
+  </div>
+  <ion-button color="dark" (click)="add()" shape="round" expand="block" *ngIf="submitable">
+    <ion-icon name="add"></ion-icon> Add
+  </ion-button>
+</ion-content>

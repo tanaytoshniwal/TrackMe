@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { TodolistPageModule } from './todolist/todolist.module';
 import { TodocompletedPageModule } from './todocompleted/todocompleted.module';
+import { AddtransactionPageModule } from './addtransaction/addtransaction.module';
 import { HomePageModule } from './home/home.module'
 
 import { environment } from '../environments/environment';
@@ -39,6 +40,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppRoutingModule,
     TodolistPageModule,
     TodocompletedPageModule,
+    AddtransactionPageModule,
     HomePageModule,
     AngularFireModule.initializeApp(environment.config),
     AngularFireAuthModule,
