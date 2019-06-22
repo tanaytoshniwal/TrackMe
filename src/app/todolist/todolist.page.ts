@@ -109,7 +109,7 @@ export class TodolistPage implements OnInit {
 
   remove(l, i){
     // this.database.doc(this.list[i]._ref).delete();
-    this.database.doc(this.list[i]._ref).delete();
+    this.database.doc(l._ref).delete();
   }
 
 
@@ -129,8 +129,8 @@ export class TodolistPage implements OnInit {
         {
           text: 'Save',
           handler: data => {
-            //this.database.doc(l._ref).update({task: data.task});
-            this.list[i].task = data.task;
+            this.database.doc(l._ref).update({task: data.task});
+            //this.list[i].task = data.task;
           }
         }
       ]
@@ -139,8 +139,14 @@ export class TodolistPage implements OnInit {
   }
 
   status(l, i){
-    this.todo.completed.push(this.list[i]);
-    this.list.splice(i, 1);
+
+    let db = this.firestore.collection<any>('todocompleted', ref=>ref.where('_id', '==' ,this.afAuth.auth.currentUser.uid));
+    db.add(l).then(data=>{
+      db.doc(data.id).update({_ref: data.id});
+      l._ref = data.id;
+    })
+    this.database.doc(l._ref).delete();
+    //this.list.splice(i, 1);
     // let temp;
     // if(l.status == 'pending') {
     //   temp = 'completed';
@@ -150,11 +156,6 @@ export class TodolistPage implements OnInit {
     // }
     // this.list[i].status = temp;
     // this.database.doc(l._ref).update({status: temp});
-  }
-
-  complete(){
-    // let modal = this.modalCtrl.create(CompletedailyPage);
-    // modal.present();
   }
 
 }
