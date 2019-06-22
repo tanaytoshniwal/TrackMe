@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -41,6 +42,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     HomePageModule,
     AngularFireModule.initializeApp(environment.config),
     AngularFireAuthModule,
+    AngularFirestoreModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
