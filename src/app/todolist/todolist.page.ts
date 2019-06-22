@@ -16,7 +16,6 @@ export class TodolistPage implements OnInit {
   title: string;
 
   list = [];
-  todo;
   data = '';
   date:any = '';
   priority = 'Medium';
@@ -30,14 +29,12 @@ export class TodolistPage implements OnInit {
     private alertController: AlertController,
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore) {
-    this.todo = dataService.todo;
   }
   
   ngOnInit() {
     switch(this.pageType){
       case 0:
         this.title = 'Daily Tasks';
-        this.list = this.todo.daily;
         this.database = this.firestore.collection<any>('tododaily', ref=>ref.where('_id', '==' ,this.afAuth.auth.currentUser.uid));
         this.database.valueChanges().subscribe(data=>{
           data = this.filter_data(data);
@@ -47,7 +44,6 @@ export class TodolistPage implements OnInit {
         break;
       case 1:
         this.title = 'Weekly Tasks';
-        this.list = this.todo.weekly;
         this.database = this.firestore.collection<any>('todoweekly', ref=>ref.where('_id', '==' ,this.afAuth.auth.currentUser.uid));
         this.database.valueChanges().subscribe(data=>{
           data = this.filter_data(data);
@@ -57,7 +53,6 @@ export class TodolistPage implements OnInit {
         break;
       case 2:
         this.title = 'Monthly Tasks';
-        this.list = this.todo.monthly;
         this.database = this.firestore.collection<any>('todomonthly', ref=>ref.where('_id', '==' ,this.afAuth.auth.currentUser.uid));
         this.database.valueChanges().subscribe(data=>{
           data = this.filter_data(data);
@@ -67,7 +62,6 @@ export class TodolistPage implements OnInit {
         break;
       case 3:
         this.title = 'Yearly Tasks';
-        this.list = this.todo.yearly;
         this.database = this.firestore.collection<any>('todoyearly', ref=>ref.where('_id', '==' ,this.afAuth.auth.currentUser.uid));
         this.database.valueChanges().subscribe(data=>{
           data = this.filter_data(data);
