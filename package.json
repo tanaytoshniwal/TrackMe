@@ -29,7 +29,9 @@
     "angularfire2": "^5.2.1",
     "cordova-plugin-googleplus": "7.0.2",
     "core-js": "^2.5.4",
-    "firebase": "^6.2.0",
+    "firebase": "^6.2.2",
+    "firebaseui": "^4.0.0",
+    "firebaseui-angular": "^3.4.2",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29"

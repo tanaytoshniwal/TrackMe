@@ -2,18 +2,19 @@
   <ion-menu>
     <ion-header>
       <ion-toolbar>
-        <ion-row padding-horizontal align-items-center>
-            <ion-col size="3" padding-vertical align-items-center>
-              <ion-avatar margin-vertical>
-                <img src="https://tanaytoshniwal.me/assets/images/icon_favo.jpg">
+        <ion-row padding-horizontal>
+            <ion-row padding-vertical class="full center">
+              <ion-avatar margin-top *ngIf="this.user">
+                <img *ngIf="this.user.photoURL" src="https://tanaytoshniwal.me/assets/images/icon_favo.jpg">
+                <img *ngIf="!this.user.photoURL" src="assets/images/user.png">
               </ion-avatar>
-            </ion-col>
-            <ion-col padding-vertical align-items-center>
-              <div margin-vertical>
-                <h4 no-margin margin-start><strong>Tanay Toshniwal</strong></h4>
-                <h6 no-margin margin-start>View Profile</h6>
+            </ion-row>
+            <ion-row padding-vertical class="full center p-0">
+              <div margin-vertical *ngIf="this.user">
+                <h4 no-margin margin-start text-center><strong>{{this.user.displayName}}</strong></h4>
+                <h6 no-margin margin-start text-center>{{this.user.email}}</h6>
               </div>
-            </ion-col>
+            </ion-row>
           </ion-row>
       </ion-toolbar>
     </ion-header>
@@ -26,7 +27,11 @@
           </ion-label>
         </ion-item>
       </ion-menu-toggle>
+      <ion-button color="dark" (click)="logout()" shape="round" expand="block">
+          <ion-icon name="add"></ion-icon> logout
+        </ion-button>
     </ion-content>
   </ion-menu>
   <ion-router-outlet main></ion-router-outlet>
+  <firebase-ui></firebase-ui>
 </ion-app>

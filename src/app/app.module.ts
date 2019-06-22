@@ -13,10 +13,22 @@ import { TodolistPageModule } from './todolist/todolist.module';
 import { TodocompletedPageModule } from './todocompleted/todocompleted.module';
 import { HomePageModule } from './home/home.module'
 
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireModule } from '@angular/fire';
-import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { environment } from '../environments/environment';
+
+import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+
+const firebaseUiAuthConfig: firebaseui.auth.Config = {
+  signInFlow: 'popup',
+  signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ],
+  tosUrl: '<your-tos-link>',
+  privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
+  credentialHelper: firebaseui.auth.CredentialHelper.NONE
+};
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,12 +40,12 @@ import { environment } from '../environments/environment';
     TodocompletedPageModule,
     HomePageModule,
     AngularFireModule.initializeApp(environment.config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
