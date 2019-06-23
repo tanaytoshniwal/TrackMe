@@ -15,7 +15,7 @@
   </div>
   <ion-card *ngFor = 'let trans of transactions; let i = index;'>
     <ion-item lines="none">
-      <ion-icon name="cash" slot="start"></ion-icon>
+      <ion-icon name="cash" slot="start" margin></ion-icon>
       <div margin>
         <ion-card-title><strong>{{trans.amount}}</strong> Bucks</ion-card-title>
         <ion-card-subtitle>Paid to: {{trans.paid_to}} on {{this.formatDate(trans.date, false)}}</ion-card-subtitle>

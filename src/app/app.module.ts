@@ -20,6 +20,7 @@ import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AddnotePageModule } from './addnote/addnote.module';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -41,6 +42,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     TodolistPageModule,
     TodocompletedPageModule,
     AddtransactionPageModule,
+    AddnotePageModule,
     HomePageModule,
     AngularFireModule.initializeApp(environment.config),
     AngularFireAuthModule,

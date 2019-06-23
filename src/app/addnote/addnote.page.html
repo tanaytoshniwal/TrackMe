@@ -1,0 +1,26 @@
+<ion-header class="tmtheme-bg">
+    <ion-toolbar color="tmtheme">
+      <ion-buttons slot="start" padding>
+        <ion-icon name="arrow-round-back" color="light" (click)="close()"></ion-icon>
+      </ion-buttons>
+      <ion-title>
+        <ion-text color="light"><strong>Add New Note</strong></ion-text>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding color="light">
+  <div margin>
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="title" (input)="check()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Content</ion-label>
+      <ion-input type="text" [(ngModel)]="content" (input)="check()"></ion-input>
+    </ion-item>
+  </div>
+  <ion-button color="dark" (click)="add()" shape="round" expand="block" *ngIf="submitable">
+    <ion-icon name="add"></ion-icon> Add
+  </ion-button>
+</ion-content>

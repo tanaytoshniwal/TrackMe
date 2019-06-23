@@ -17,7 +17,8 @@ const routes: Routes = [
       { path: 'fitness', loadChildren: './fitness/fitness.module#FitnessPageModule' }
     ]
   },
-  { path: 'addtransaction', loadChildren: './addtransaction/addtransaction.module#AddtransactionPageModule' }
+  { path: 'addtransaction', loadChildren: './addtransaction/addtransaction.module#AddtransactionPageModule' },
+  { path: 'addnote', loadChildren: './addnote/addnote.module#AddnotePageModule' }
 ];
 
 @NgModule({

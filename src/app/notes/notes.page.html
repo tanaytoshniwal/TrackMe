@@ -10,5 +10,42 @@
 </ion-header>
 
 <ion-content padding color="light">
-I am notes
+  <div class="nothing" *ngIf="notes.length == 0">
+    <h1>There's Nothing here...</h1>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" class="bottom">
+    <ion-fab-button color="tmtheme" size="small" (click)="openModal()">
+      <ion-icon name="brush" color="light"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card *ngFor = 'let note of notes; let i = index;'>
+    <ion-item lines="none">
+      <ion-icon name="clipboard" slot="start" margin></ion-icon>
+      <div margin>
+        <ion-card-title><strong>{{note.title}}</strong></ion-card-title>
+        <ion-card-subtitle>{{dataService.formatDate(note.date, false)}}</ion-card-subtitle>
+      </div>
+    </ion-item>
+    <ion-card-content>
+      {{note.content}}
+    </ion-card-content>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button *ngIf="!note.pinned" color="success" (click)="pin_switch(i, note)" fill="outline" shape="round" expand="block">
+          <ion-icon name="bookmark" color="success"></ion-icon>
+          <div><strong>Pin</strong></div>
+        </ion-button>
+        <ion-button *ngIf="note.pinned" color="success" (click)="pin_switch(i, note)" shape="round" expand="block">
+          <ion-icon name="bookmark" color="light"></ion-icon>
+          <div><strong>Unpin</strong></div>
+        </ion-button>
+      </ion-col>
+      <ion-col text-center>
+        <ion-button color="danger" (click)="remove(i, note)" shape="round" expand="block">
+          <ion-icon name="trash" color="light"></ion-icon>
+          <div><strong>Delete</strong></div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
