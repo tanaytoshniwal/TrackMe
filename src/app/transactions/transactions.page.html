@@ -14,32 +14,31 @@
     <h1>There's Nothing here...</h1>
   </div>
   <ion-card *ngFor = 'let trans of transactions; let i = index;'>
-    <ion-item>
-      <ion-icon name="cash" item-start>
-      </ion-icon>
+    <ion-item lines="none">
+      <ion-icon name="cash" slot="start"></ion-icon>
       <div margin>
-        <h2><b>{{trans.amount}}</b> Bucks</h2>
-        <h4>Paid to: {{trans.paid_to}}</h4>
-        <h4>{{this.formatDate(trans.date, false)}}</h4>
+        <ion-card-title><strong>{{trans.amount}}</strong> Bucks</ion-card-title>
+        <ion-card-subtitle>Paid to: {{trans.paid_to}} on {{this.formatDate(trans.date, false)}}</ion-card-subtitle>
       </div>
     </ion-item>
     <ion-card-content>
-      <p>{{trans.reason}}</p>
+      <strong>Reason:</strong> {{trans.reason}}
     </ion-card-content>
 
     <ion-row>
       <ion-col text-center *ngIf="trans.lend">
-        <ion-button color="tmtheme" (click)="gotback(i, trans)" shape="round" expand="block">
-          <ion-icon name="done-all" color="green"></ion-icon> <ion-text color="light">Got it back</ion-text>
+        <ion-button color="success" (click)="gotback(i, trans)" shape="round" expand="block">
+          <ion-icon name="done-all" color="light"></ion-icon> <ion-text color="light"><strong>Got it back</strong></ion-text>
         </ion-button>
       </ion-col>
       <ion-col text-center>
-        <ion-button color="tmtheme" (click)="remove(i, trans)" shape="round" expand="block">
-          <ion-icon name="trash" color="danger"></ion-icon> <ion-text color="light">Delete</ion-text>
+        <ion-button color="danger" (click)="remove(i, trans)" shape="round" expand="block">
+          <ion-icon name="trash" color="light"></ion-icon> <ion-text color="light"><strong>Delete</strong></ion-text>
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-card>
+
   <ion-fab vertical="bottom" horizontal="end" class="bottom">
     <ion-fab-button color="tmtheme" size="small" (click)="open()">
       <ion-icon name="add" color="light"></ion-icon>
