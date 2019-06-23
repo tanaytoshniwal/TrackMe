@@ -26,7 +26,7 @@ export class AppComponent {
   ];
 
   constructor(
-    private rou: Router,
+    private router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -37,18 +37,21 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  initializeApp() {
+  initializeApp = ()=>{
     this.platform.ready().then(() => {
       this.afAuth.authState.subscribe(this.firebaseAuthChangeListener);
+      if(this.afAuth.auth.currentUser){
+        this.user = this.afAuth.auth.currentUser
+        this.menuCtrl.enable(true)
+        this.router.navigateByUrl('/home')
+      }
+      else{
+        this.menuCtrl.enable(false)
+        this.router.navigateByUrl('/login')
+      }
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
-
-  logout = ()=>{
-    this.afAuth.auth.signOut().then(res=>{
-      this.menuCtrl.enable(false);
-    })
   }
 
   firebaseAuthChangeListener = (response)=>{
@@ -58,12 +61,18 @@ export class AppComponent {
       this.user = this.afAuth.auth.currentUser;
       // this.auth.user = this.afAuth.auth.currentUser;
       // console.log(this.auth.user)
-      this.rou.navigate(["/home"])
+      this.router.navigateByUrl('/home')
     } else {
       this.menuCtrl.enable(false)
       this.user = undefined;
       // this.auth.user = undefined;
-      this.rou.navigate(["/login"])
+      this.router.navigateByUrl('/login')
     }
+  }
+
+  logout = ()=>{
+    this.afAuth.auth.signOut().then(res=>{
+      this.menuCtrl.enable(false);
+    })
   }
 }

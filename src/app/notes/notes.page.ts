@@ -44,11 +44,6 @@ export class NotesPage implements OnInit {
     this.notes_collection.doc(o._ref).delete();
   }
 
-  fill(i, o){
-    console.log((o.pinned)? "clear":"outline")
-    return (o.pinned)? "clear":"outline";
-  }
-var = "outline"
   async openModal(){
     const modal = await this.modalCtrl.create({
       component: AddnotePage
