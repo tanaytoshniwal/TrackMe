@@ -10,5 +10,32 @@
 </ion-header>
 
 <ion-content padding color="light">
-I am remainders
+  <div class="nothing" *ngIf="remainders.length == 0">
+    <h1>There's Nothing here...</h1>
+  </div>
+  <ion-card *ngFor = 'let obj of remainders; let i = index;'>
+    <ion-item>
+      <ion-icon name="pricetags" slot="start"></ion-icon>
+      <div margin>
+        <ion-card-title><strong>{{obj.title}}</strong></ion-card-title>
+        <ion-card-subtitle>{{this.dataService.formatDate(obj.date, true)}}</ion-card-subtitle>
+      </div>
+    </ion-item>
+    <ion-card-content>
+      {{obj.description}}
+    </ion-card-content>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button color="danger" (click)="remove(i, obj)" shape="round" expand="block">
+          <ion-icon name="trash" color="light"></ion-icon>
+          <div><strong>Delete</strong></div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" class="bottom">
+    <ion-fab-button color="tmtheme" size="small" (click)="openModal()">
+      <ion-icon name="bowtie" color="light"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

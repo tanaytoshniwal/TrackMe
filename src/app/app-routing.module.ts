@@ -18,7 +18,8 @@ const routes: Routes = [
     ]
   },
   { path: 'addtransaction', loadChildren: './addtransaction/addtransaction.module#AddtransactionPageModule' },
-  { path: 'addnote', loadChildren: './addnote/addnote.module#AddnotePageModule' }
+  { path: 'addnote', loadChildren: './addnote/addnote.module#AddnotePageModule' },
+  { path: 'addremainder', loadChildren: './addremainder/addremainder.module#AddremainderPageModule' }
 ];
 
 @NgModule({

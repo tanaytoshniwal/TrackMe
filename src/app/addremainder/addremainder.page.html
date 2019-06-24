@@ -4,7 +4,7 @@
       <ion-icon name="arrow-round-back" color="light" (click)="close()"></ion-icon>
     </ion-buttons>
     <ion-title>
-      <ion-text color="light"><strong>Add New Note</strong></ion-text>
+      <ion-text color="light"><strong>Add New Remainder</strong></ion-text>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,8 +16,16 @@
       <ion-input type="text" [(ngModel)]="title" (input)="check()"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Content</ion-label>
-      <ion-input type="text" [(ngModel)]="content" (input)="check()"></ion-input>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="description" (input)="check()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date of Remainder</ion-label>
+      <ion-datetime margin displayFormat="MMM DD YYYY" placeholder="Select Date" [(ngModel)]="date" (ionChange)="check()"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Start Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" placeholder="Select Time" pickerFormat="h mm A" [(ngModel)]="time" (ionChange)="check()"></ion-datetime>
     </ion-item>
   </div>
   <ion-button color="dark" (click)="add()" shape="round" expand="block" *ngIf="submitable">
