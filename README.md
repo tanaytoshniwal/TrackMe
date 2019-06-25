@@ -1,6 +1,9 @@
 # TrackMe
 A Hybrid Mobile Application that helps you to stay on track and maintain a record of your tasks, notes, transactions and track their progress in an efficient way.
 
+## APK:
+Download the TrackMe application from this [link](https://github.com/tanaytoshniwal/TrackMe/raw/master/apk/TrackMe.apk).
+
 ## Features:
 +   __Todo List__ : A simple todo list categorized specially for daily, weekly, monthly and yearly tasks
 +   __Transactions Statistics__ : Track your daily transactions
